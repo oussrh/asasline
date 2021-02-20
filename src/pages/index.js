@@ -1,22 +1,27 @@
 import React from "react"
-import { Link } from "gatsby"
 
 import Layout from "../components/layout"
-import Image from "../components/image"
 import SEO from "../components/seo"
+import Carousel from "../components/carousel/carousel"
+// import HomepageAbout from "../components/homepageAbout"
+// import OurProduct from "../components/ourProduct"
+import ContactForm from "../components/contactForm/contactForm"
+// import Qualities from "../components/ourQualities"
 
-const IndexPage = () => (
-  <Layout>
-    <SEO title="Home" />
-    <h1>Hi people</h1>
-    <p>Welcome to your new Gatsby site.</p>
-    <p>Now go build something great.</p>
-    <div style={{ maxWidth: `300px`, marginBottom: `1.45rem` }}>
-      <Image />
-    </div>
-    <Link to="/page-2/">Go to page 2</Link> <br />
-    <Link to="/using-typescript/">Go to "Using TypeScript"</Link>
-  </Layout>
-)
+import { useIntl } from "gatsby-plugin-intl"
+
+const IndexPage = () => {
+  const intl = useIntl()
+  return (
+    <Layout>
+      <SEO
+        title={intl.formatMessage({ id: "homePage_seo_title" })}
+        description={intl.formatMessage({ id: "homePage_seo_description" })} />
+      <Carousel />
+      <ContactForm />
+    </Layout>
+  )
+
+}
 
 export default IndexPage

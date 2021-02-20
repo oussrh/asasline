@@ -1,0 +1,49 @@
+.homePageFormContainer {
+  width: 100vw;
+}
+
+.formContact {
+  justify-self: center;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  background: rgb(2, 0, 36);
+  background: linear-gradient(
+    90deg,
+    rgba(2, 0, 36, 1) 0%,
+    rgba(239, 64, 54, 1) 35%,
+    rgba(2, 0, 36, 1) 100%
+  );
+  padding: 50px 0;
+}
+
+.formContact form {
+  width: 25vw;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.formInput {
+  height: 50px;
+  margin-bottom: 30px;
+}
+
+.formInputText {
+  height: 100px;
+}
+
+.homePageconatctText {
+  height: 100%;
+  margin-left: 50px;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 30vw;
+}
+
+.homePageconatctText p {
+  margin-bottom: 20px;
+}

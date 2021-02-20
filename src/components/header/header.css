@@ -1,0 +1,123 @@
+header {
+  width: 100vw;
+  margin: 0;
+  padding: 0;
+}
+
+.headerInfo {
+  background-color: #ef4036;
+  width: 100vw;
+  color: aliceblue;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: row;
+  padding-left: 10vw;
+  padding-right: 10vw;
+  padding: 10px 10vw;
+}
+
+.headerInfo ul {
+  margin: 0 0;
+  display: inline;
+  text-decoration-style: none;
+}
+.headerInfo li {
+  display: inline;
+  margin-right: 50px;
+}
+
+.socialNet a {
+  color: #fff;
+}
+
+.socialNet li,
+.socialNet a,
+.socialNet svg {
+  font-size: 16px !important;
+}
+
+.infoList li {
+  font-size: 16px;
+}
+
+.langSwitch span,
+.dropdown-toggle::after {
+  color: #fff;
+}
+
+/* Nav */
+
+.navLogo {
+  height: 40px;
+  margin-left: 10vw;
+}
+
+.langSwitch {
+  margin-right: 50px;
+  display: inline-block;
+}
+
+/****************************Phones****************************************/
+@media only screen and (max-width: 420px) {
+  .headerInfo {
+    display: flex;
+    justify-content: center;
+  }
+
+  .infoList {
+    display: none !important;
+  }
+
+  .socialNet {
+    display: flex;
+    justify-content: center;
+  }
+
+  .socialNet ul {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .socialNet li {
+    margin: 0 20px;
+  }
+
+  .nav-link {
+    display: inline-block;
+  }
+}
+
+/************************Tabellete**************************************** */
+@media only screen and (min-width: 421px) and (max-width: 1025px) {
+  .headerInfo {
+    display: flex;
+    justify-content: center;
+  }
+
+  .infoList {
+    display: none !important;
+  }
+
+  .infoList li {
+    font-size: 12px;
+  }
+
+  .socialNet {
+    display: flex;
+    justify-content: center;
+  }
+
+  .socialNet ul {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .socialNet li {
+    margin: 0 20px;
+  }
+
+  .nav-link {
+    display: inline-block;
+  }
+}

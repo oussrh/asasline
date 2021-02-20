@@ -1,0 +1,145 @@
+.mainFooter {
+  background-image: url("../../images/footerBg.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  object-position: bottom;
+  width: 100vw;
+  border-top: 5px solid #242c42;
+}
+
+.footerInfo {
+  background-color: #000;
+  opacity: 0.8;
+  width: 100vw;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 50px 0;
+}
+
+.footerInfo section {
+  width: 15%;
+  display: flex;
+  flex-direction: column;
+  padding: 0 20px;
+}
+
+.footerAbout p {
+  color: #808080;
+}
+
+.footerAbout ul {
+  color: #808080;
+  list-style: none;
+  padding: 10px 0;
+}
+
+.footerScoialNetwork li {
+  display: inline;
+  padding-right: 20px;
+  color: #808080;
+}
+
+.footerScoialNetwork a {
+  color: #808080;
+}
+
+.footerScoialNetwork a:hover {
+  color: #fff;
+}
+
+.footerInfo section h3 {
+  color: #fff;
+}
+
+.footerMainMenu {
+  display: flex;
+  flex-direction: column;
+  justify-items: flex-start;
+}
+
+.footerMainMenu ul,
+.footerSecondMenu ul {
+  display: block;
+  list-style: none;
+}
+
+.footerMainMenu a,
+.footerSecondMenu a {
+  color: #808080;
+}
+
+.footerMainMenu a:hover,
+.footerSecondMenu a:hover {
+  color: #fff;
+  text-decoration: none;
+}
+
+.footerMainMenu li,
+.footerSecondMenu li {
+  color: #808080;
+  border-bottom: 1px dashed #333333;
+  padding: 10px 0;
+}
+
+.lastElm {
+  border: none !important;
+}
+
+.footerNewsletter p {
+  color: #808080;
+  margin-bottom: 10px;
+}
+
+.footerNewsletter form {
+  margin-top: 20px;
+}
+
+.footerNewsletter button {
+  color: #ef4036;
+}
+
+.footerNewsletter button:hover {
+  color: #fff;
+  background-color: #ef4036;
+}
+
+.footerNewsletter .form-control {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.reservedRights {
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  padding: 10px 0;
+}
+
+/****************************Phones****************************************/
+@media only screen and (max-width: 420px) {
+  .footerInfo {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .footerInfo section {
+    display: flex;
+    width: 100%;
+    margin-bottom: 20px;
+  }
+}
+
+/************************Tabellete**************************************** */
+@media only screen and (min-width: 421px) and (max-width: 1025px) {
+  .footerInfo {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .footerInfo section {
+    display: flex;
+    width: 100%;
+    margin-bottom: 20px;
+  }
+}

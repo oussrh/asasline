@@ -1,0 +1,24 @@
+@import "../../node_modules/sal.js/dist/sal.css";
+
+* {
+  scroll-behavior: smooth;
+}
+body,
+html,
+p,
+ul,
+li,
+a,
+span,
+div,
+section,
+article,
+img,
+nav,
+header,
+footer,
+label main,
+aside {
+  margin: 0;
+  padding: 0;
+}

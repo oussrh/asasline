@@ -1,0 +1,66 @@
+.carousel {
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  height: 88vh;
+}
+
+.carouselItem {
+  width: 100vw;
+  height: 88vh;
+}
+
+.carouselItem img {
+  margin: 0 auto;
+  overflow-y: hidden;
+}
+
+.carouselItem caption {
+  color: aliceblue;
+  font-size: 30px;
+}
+
+/****************************Phones****************************************/
+@media only screen and (max-width: 420px) {
+  .carousel {
+    width: 100vw;
+    height: 30vh;
+  }
+
+  .carouselItem {
+    width: 100vw;
+    height: 30vh;
+  }
+
+  .carouselItem img {
+    width: 100vw;
+    height: 30vh;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    object-fit: cover;
+    object-position: center;
+  }
+}
+
+@media only screen and (min-width: 421px) and (max-width: 1025px) {
+  .carousel {
+    width: 100vw;
+    height: 30vh;
+  }
+
+  .carouselItem {
+    width: 100vw;
+    height: 30vh;
+  }
+
+  .carouselItem img {
+    width: 100vw;
+    height: 30vh;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    object-fit: cover;
+    object-position: center;
+  }
+}
