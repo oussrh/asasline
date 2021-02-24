@@ -53,7 +53,7 @@ const ContactForm = () => {
                     <h3>{intl.formatMessage({ id: "contactSectionTitle" })}</h3>
                     <p>{intl.formatMessage({ id: "contactSectiontext" })}</p>
                     <p>Tel: {intl.formatMessage({ id: "phone_number" })}</p>
-                    <p>Email: contact(@)batrade.be</p>
+                    <p>Email: contact(@)asasline.com</p>
                 </section>
             </article>
             <div className="parallax"></div>

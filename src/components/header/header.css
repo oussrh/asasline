@@ -5,7 +5,7 @@ header {
 }
 
 .headerInfo {
-  background-color: #ef4036;
+  background-color: #f7af3d;
   width: 100vw;
   color: aliceblue;
   display: flex;
@@ -56,6 +56,10 @@ header {
 .langSwitch {
   margin-right: 50px;
   display: inline-block;
+}
+
+.Navbar {
+  background-color: #0c1836;
 }
 
 /****************************Phones****************************************/

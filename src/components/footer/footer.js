@@ -1,6 +1,5 @@
 import { useStaticQuery, graphql } from "gatsby"
 import React, { useState } from "react"
-import { AnchorLink } from "gatsby-plugin-anchor-links"
 import addToMailchimp from 'gatsby-plugin-mailchimp'
 import Swal from 'sweetalert2'
 
@@ -18,7 +17,6 @@ import { faEnvelope } from '@fortawesome/free-solid-svg-icons'
 import { faGlobe } from '@fortawesome/free-solid-svg-icons'
 import { faFacebookF } from '@fortawesome/free-brands-svg-icons'
 import { faInstagram } from '@fortawesome/free-brands-svg-icons'
-import { faYoutube } from '@fortawesome/free-brands-svg-icons'
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './footer.css'
@@ -65,7 +63,7 @@ const Footer = () => {
           <section className="footerInfo">
             <section className="footerAbout">
               <figure onContextMenu={(e) => e.preventDefault()} role='presentation'>
-                <Img fluid={data.contentfulLogo.logo.fluid} alt="Batrade" title="Batrade" />
+                <Img fluid={data.contentfulLogo.logo.fluid} alt="Asasline" title="Asasline" />
               </figure>
               <p>
                 {intl.formatMessage({ id: "footerAboutText" })}
@@ -73,18 +71,15 @@ const Footer = () => {
               <p>{intl.formatMessage({ id: "contactpageCity" })} - {intl.formatMessage({ id: "contactpageCountry" })}</p>
               <ul>
                 <li><FontAwesomeIcon icon={faPhoneAlt} /> {intl.formatMessage({ id: "phone_number" })}</li>
-                <li><FontAwesomeIcon icon={faEnvelope} /> contact(@)batrade.be</li>
-                <li><FontAwesomeIcon icon={faGlobe} />  www.batrade.be</li>
+                <li><FontAwesomeIcon icon={faEnvelope} /> contact(@)asasline.com</li>
+                <li><FontAwesomeIcon icon={faGlobe} />  www.asasline.com</li>
               </ul>
               <ul className="footerScoialNetwork">
                 <li>
-                  <a href="https://facebook.com/BatradeClothing" target='_blank' rel="noreferrer" title="Batrade facebook page" aria-label="Batrade facebook page"><FontAwesomeIcon icon={faFacebookF} /></a>
+                  <a href="https://facebook.com/asasline" target='_blank' rel="noreferrer" title="Asasline facebook page" aria-label="Asasline facebook page"><FontAwesomeIcon icon={faFacebookF} /></a>
                 </li>
                 <li>
-                  <a href="https://instagram.com/BatradeClothing" target='_blank' rel="noreferrer" title="Batrade instagram page" aria-label="Batrade instagram page"><FontAwesomeIcon icon={faInstagram} /></a>
-                </li>
-                <li>
-                  <a href="https://www.youtube.com/channel/UCJvOxdTdn8n_VH128nD1D-A" target='_blank' rel="noreferrer" title="Batrade youtube page" aria-label="Batrade youtube page"><FontAwesomeIcon icon={faYoutube} /></a>
+                  <a href="https://instagram.com/asasline" target='_blank' rel="noreferrer" title="Asasline instagram page" aria-label="Asasline instagram page"><FontAwesomeIcon icon={faInstagram} /></a>
                 </li>
               </ul>
             </section>
@@ -92,24 +87,20 @@ const Footer = () => {
               <h3>Menu</h3>
               <ul>
                 <li>{<Link to="/">{intl.formatMessage({ id: "home_page" })}</Link>}</li>
-                <li>{<Link to="/about-us">{intl.formatMessage({ id: "about_page" })}</Link>}</li>
-                <li>{<Link to="/our-products">{intl.formatMessage({ id: "product_page" })}</Link>}</li>
-                <li>{<Link to="/contact-us">{intl.formatMessage({ id: "contact_page" })}</Link>}</li>
-                <li>{<Link to="/estimation">{intl.formatMessage({ id: "devis_page" })}</Link>}</li>
+                <li>{<Link to="/about">{intl.formatMessage({ id: "about_page" })}</Link>}</li>
+                <li>{<Link to="/services">{intl.formatMessage({ id: "services_page" })}</Link>}</li>
+                <li>{<Link to="/contact">{intl.formatMessage({ id: "contact_page" })}</Link>}</li>
+                <li>{<Link to="/quote">{intl.formatMessage({ id: "devis_page" })}</Link>}</li>
                 <li className="lastElm">{<Link to="/shipping">{intl.formatMessage({ id: "shipping_page" })}</Link>}</li>
               </ul>
 
             </section>
             <section className="footerSecondMenu">
-              <h3>{intl.formatMessage({ id: "product_page" })}</h3>
+              <h3>{intl.formatMessage({ id: "link_page" })}</h3>
               <ul>
-                <li>{<AnchorLink title="Batrade secondhand clothes" to="/used-clothes">{intl.formatMessage({ id: "prod_clothes" })}</AnchorLink>}</li>
-                <li>{<AnchorLink title="Batrade secondhand shoes" to="/used-shoes">{intl.formatMessage({ id: "prod_shoes" })}</AnchorLink>}</li>
-                <li>{<AnchorLink title="Batrade secondhand handbags" to="/handbags">{intl.formatMessage({ id: "prod_handbag" })}</AnchorLink>}</li>
-                <li>{<AnchorLink title="Batrade secondhand accessories" to="/accessories">{intl.formatMessage({ id: "prod_accessories" })}</AnchorLink>}</li>
-                <li>{<AnchorLink title="Batrade secondhand vintage clothes" to="/vintage">{intl.formatMessage({ id: "prod_vintage" })}</AnchorLink>}</li>
-                <li>{<AnchorLink title="Batrade secondhand toys" to="/toys">{intl.formatMessage({ id: "prod_toys" })}</AnchorLink>}</li>
-                <li className="lastElm">{<AnchorLink title="Batrade recycling" to="/recycling">{intl.formatMessage({ id: "prod_recycling" })}</AnchorLink>}</li >
+                {/* <li>{<AnchorLink title="Batrade secondhand clothes" to="/used-clothes">{intl.formatMessage({ id: "prod_clothes" })}</AnchorLink>}</li> */}
+
+                {/* <li className="lastElm">{<AnchorLink title="Batrade recycling" to="/recycling">{intl.formatMessage({ id: "prod_recycling" })}</AnchorLink>}</li > */}
               </ul >
             </section >
             <section className="footerNewsletter">
@@ -137,7 +128,7 @@ const Footer = () => {
           </section >
         </article >
         <section className="reservedRights">
-          © {new Date().getFullYear()}, Batrade S.R.L . All Rights Reserved.
+          © {new Date().getFullYear()}, ASASLINE S.R.L . All Rights Reserved.
         </section>
 
       </footer >

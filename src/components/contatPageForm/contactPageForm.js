@@ -1,4 +1,5 @@
 import React from "react"
+import { useStaticQuery, graphql } from "gatsby"
 import ReCAPTCHA from "react-google-recaptcha";
 
 import Form from 'react-bootstrap/Form'
@@ -6,21 +7,46 @@ import Button from 'react-bootstrap/Button'
 import Container from 'react-bootstrap/Container'
 import Col from 'react-bootstrap/Col'
 
-import '../style/style.css'
+import { renderRichText } from "gatsby-source-contentful/rich-text"
+
+import './contactPageForm.css'
 
 import { useIntl, injectIntl } from "gatsby-plugin-intl"
 
 const ContactForm = () => {
     const intl = useIntl()
 
+    const data = useStaticQuery(
+        graphql`
+    query {
+        allContentfulContactPage {
+        nodes {
+          title
+          node_locale
+          seoTitle
+          seoDescription
+          contactText {
+            raw
+            }
+        }
+      }
+    }`)
     return (
         <Container>
 
             <article className="formContactPage">
                 <section className="contactfirstLine">
-                    <h1>{intl.formatMessage({ id: "contact_page" })}</h1>
-                    <p>{intl.formatMessage({ id: "contactFormpresentation" })}</p>
-                    <p><br /></p>
+                    {data.allContentfulContactPage.nodes.filter(artl => artl.node_locale === intl.locale).map(artl => {
+                        return (
+                            <>
+                                <h1>{artl.title}</h1>
+                                <p>{renderRichText(artl.contactText)}</p>
+                                <p><br /></p>
+                            </>
+                        )
+
+                    })
+                    }
                 </section>
                 <Form method="POST" data-netlify="true" name="contactForm v2" data-netlify-recaptcha='true'>
                     <input type="hidden" name="form-name" value="contactForm v2" />

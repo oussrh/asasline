@@ -7,13 +7,7 @@
   display: flex;
   align-items: flex-start;
   justify-content: center;
-  background: rgb(2, 0, 36);
-  background: linear-gradient(
-    90deg,
-    rgba(2, 0, 36, 1) 0%,
-    rgba(239, 64, 54, 1) 35%,
-    rgba(2, 0, 36, 1) 100%
-  );
+  background-color: #e8e9e8;
   padding: 50px 0;
 }
 
@@ -37,7 +31,7 @@
 .homePageconatctText {
   height: 100%;
   margin-left: 50px;
-  color: #fff;
+  color: #0c1836;
   display: flex;
   flex-direction: column;
   align-items: flex-start;

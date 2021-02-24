@@ -16,6 +16,7 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 
 import 'bootstrap/dist/css/bootstrap.min.css';
+
 import '../style/style.css'
 
 import { injectIntl, FormattedMessage, useIntl } from "gatsby-plugin-intl"
@@ -107,7 +108,6 @@ const DevisPage = () => {
             const message = addToMailchimp(email)
             setResult(message)
 
-            let pdfs = qdata.allContentfulAsset.nodes
             const data =
             {
                 lang,
@@ -121,8 +121,7 @@ const DevisPage = () => {
                 dock,
                 saison,
                 quality,
-                quantity,
-                pdfs
+                quantity
             }
 
             axios.post(endpoint, JSON.stringify(data)).then(response => {
@@ -176,11 +175,16 @@ const DevisPage = () => {
                                 </Form.Group>
                             </Col>
                         </Form.Row>
-                        <Form.Group controlId="email">
-                            <Form.Label>{intl.formatMessage({ id: "form_email_label" })} <span className="required_star">*</span></Form.Label>
-                            <Form.Control type="email" name="email" onChange={handleEmailInput} placeholder={intl.formatMessage({ id: "form_email_placeHolder" })} required />
-                            <Form.Control.Feedback type="invalid">{intl.formatMessage({ id: "form_email_validation" })}</Form.Control.Feedback>
-                        </Form.Group>
+                        <Form.Row>
+                            <Col>
+                                <Form.Group controlId="email">
+                                    <Form.Label>{intl.formatMessage({ id: "form_email_label" })} <span className="required_star">*</span></Form.Label>
+                                    <Form.Control type="email" name="email" onChange={handleEmailInput} placeholder={intl.formatMessage({ id: "form_email_placeHolder" })} required />
+                                    <Form.Control.Feedback type="invalid">{intl.formatMessage({ id: "form_email_validation" })}</Form.Control.Feedback>
+                                </Form.Group>
+                            </Col>
+                            <Col></Col>
+                        </Form.Row>
                         <Form.Row>
                             <Col>
                                 <Form.Group controlId="company">
@@ -203,131 +207,106 @@ const DevisPage = () => {
                                     <Form.Control.Feedback type="invalid">{intl.formatMessage({ id: "form_phone_validation" })}</Form.Control.Feedback>
                                 </Form.Group>
                             </Col>
-                            <Col>
-                                <Form.Group controlId="country">
-                                    <Form.Label>{intl.formatMessage({ id: "form_country_label" })} <span className="required_star">*</span></Form.Label>
-                                    <Form.Control as="select" name="country" onChange={handleCountryInput} placeholder={intl.formatMessage({ id: "form_country_placeHolder" })} required>
-                                        <option value="">...</option>
-                                        {
-                                            countries.map(c =>
-                                                <option key={c.id} value={c.name}>{c.name}</option>
-                                            )
-                                        }
-                                    </Form.Control>
-                                    <Form.Control.Feedback type="invalid">{intl.formatMessage({ id: "form_country_validation" })}</Form.Control.Feedback>
-                                </Form.Group>
-                            </Col>
+                            <Col></Col>
                         </Form.Row>
-                        <Form.Group controlId="dock">
-                            <Form.Label>{intl.formatMessage({ id: "form_port_label" })}</Form.Label>
-                            <Form.Control type="text" name="dock" onChange={handleDockInput} placeholder={intl.formatMessage({ id: "form_port_placeHolder" })} />
-                        </Form.Group>
-                        {/* Selections */}
-                        <Form.Group controlId="season">
-                            <Form.Label>{intl.formatMessage({ id: "form_saison_label" })}</Form.Label>
-                            <Form.Control as="select" name="season" onChange={handleSaisonSelect} required>
-                                <option key="0" value="0">{intl.formatMessage({ id: "form_select_keyword" })}</option>
-                                <option key="1" value="summer">{intl.formatMessage({ id: "summer_saison_label" })}</option>
-                                <option key="2" value="winter">{intl.formatMessage({ id: "winter_saison_label" })}</option>
-                            </Form.Control>
-                        </Form.Group>
-                        {
+                        <fieldset>
+                            <legend>ROUTE</legend>
+                            <Form.Row>
+                                <Col>
+                                    <Form.Group controlId="country">
+                                        <Form.Label>{intl.formatMessage({ id: "form_FROM_country_label" })} <span className="required_star">*</span></Form.Label>
+                                        <Form.Control as="select" name="country" onChange={handleCountryInput} placeholder={intl.formatMessage({ id: "form_country_placeHolder" })} required>
+                                            <option value="">...</option>
+                                            {
+                                                countries.map(c =>
+                                                    <option key={c.id} value={c.name}>{c.name}</option>
+                                                )
+                                            }
+                                        </Form.Control>
+                                        <Form.Control.Feedback type="invalid">{intl.formatMessage({ id: "form_country_validation" })}</Form.Control.Feedback>
+                                    </Form.Group>
+                                </Col>
+                                <Col>
 
-                            qualityV ?
-                                < Form.Group controlId="quality">
-                                    <Form.Label>{intl.formatMessage({ id: "form_quality_label" })}</Form.Label>
-                                    <Form.Control as="select" name="quality" onChange={handleQualitySelect} required>
-                                        <option key="0" value="0">{intl.formatMessage({ id: "form_select_keyword" })}</option>
-                                        {
-                                            saison === 'summer' ?
-                                                <>
-                                                    <option key="1" value="extra_cream">{intl.formatMessage({ id: "form_quality_summer_1" })}</option>
-                                                    <option key="3" value="cream_mix_A_B">{intl.formatMessage({ id: "form_quality_summer_4" })}</option>
-                                                    <option key="2" value="grade_A_and_B">{intl.formatMessage({ id: "form_quality_summer_2" })}</option>
-                                                    <option key="3" value="tropica_Mix">{intl.formatMessage({ id: "form_quality_summer_3" })}</option>
-                                                </>
-                                                :
-                                                <>
-                                                    <option key="1" value="mix_cream">{intl.formatMessage({ id: "form_quality_winter_1" })}</option> mix cream
-                                                    <option key="2" value="grade_A">{intl.formatMessage({ id: "form_quality_winter_2" })}</option> A grade
-                                                </>
-                                        }
-                                    </Form.Control>
-                                </Form.Group>
-                                :
-                                null
-                        }
-                        {
-                            quantityV ?
-                                <Form.Group controlId="quantity">
-                                    <Form.Label>{intl.formatMessage({ id: "form_quantity_label" })}</Form.Label>
-                                    <Form.Control as="select" name="quantity" onChange={handleQuatitySelect} required>
-                                        <option key="0" value="0"> {intl.formatMessage({ id: "form_select_keyword" })}</option>
-                                        {
-                                            quality === 'extra_cream' ?
-                                                <>
-                                                    <option key="1" value="under_900">{intl.formatMessage({ id: "form_qte_under900" })}</option>
-                                                    <option key="2" value="summer_under_10tCream">{intl.formatMessage({ id: "form_qte_under10t" })}</option>
-                                                    <option key="2" value="20ftCreamSummer">{intl.formatMessage({ id: "form_qte_20ft" })}</option>
-                                                </>
-                                                : quality === 'cream_mix_A_B' ?
-                                                    <>
-                                                        <option key="1" value="mix_cream_20ft45kg">{intl.formatMessage({ id: "form_qte_mix_cream_20ft_45" })}</option>
-                                                        <option key="2" value="mix_cream_40ft45kg">{intl.formatMessage({ id: "form_qte_mix_cream_40ft_45" })}</option>
-                                                        <option key="5" value="mix_cream_20ft55kg">{intl.formatMessage({ id: "form_qte_mix_cream_20ft_55" })}</option>
-                                                        <option key="3" value="mix_cream_40ft55kg">{intl.formatMessage({ id: "form_qte_mix_cream_40ft_55" })}</option>
-                                                        <option key="4" value="mix_cream_40ft80kg">{intl.formatMessage({ id: "form_qte_mix_cream_40ft_80" })}</option>
-                                                    </>
-                                                    : quality === 'grade_A_and_B' ?
-                                                        <>
-                                                            <option key="1" value="20ft_45AB">{intl.formatMessage({ id: "form_qte_20ft_45" })}</option>
-                                                            <option key="2" value="20ft_55AB">{intl.formatMessage({ id: "form_qte_20ft_55" })}</option>
-                                                            <option key="3" value="40ft_45AB">{intl.formatMessage({ id: "form_qte_40ft_45" })}</option>
-                                                            <option key="4" value="40ft_55AB">{intl.formatMessage({ id: "form_qte_40ft_55" })}</option>
-                                                        </>
-                                                        : quality === 'tropica_Mix' ?
-                                                            <>
-                                                                <option key="1" value="tropical20ft45kg">{intl.formatMessage({ id: "form_qte_tropical20" })}</option>
-                                                                <option key="2" value="tropical40ft45kg">{intl.formatMessage({ id: "form_qte_tropical40_45" })}</option>
-                                                                <option key="3" value="tropical40ft55kg">{intl.formatMessage({ id: "form_qte_tropical_40_55" })}</option>
-                                                                <option key="4" value="tropical40ft80kg">{intl.formatMessage({ id: "form_qte_tropical40_80" })}</option>
-                                                            </>
-                                                            : quality === 'mix_cream' ?
-                                                                <>
-                                                                    <option key="1" value="under_900">{intl.formatMessage({ id: "form_qte_under900" })}</option>
-                                                                    <option key="2" value="winter_under_10tMixCream">{intl.formatMessage({ id: "form_qte_under10t" })}</option>
-                                                                    <option key="3" value="20ftMixCreamWinter">{intl.formatMessage({ id: "form_qte_20ft" })}</option>
-                                                                </>
-                                                                : quality === 'grade_A' ?
-                                                                    <>
-                                                                        <option key="1" value="under_900">{intl.formatMessage({ id: "form_qte_under900" })}</option>
-                                                                        <option key="2" value="more_900_A_Winter">{intl.formatMessage({ id: "form_qte_under10t_gradeA" })}</option>
-                                                                        {/* <option key="3" value="20ftWinterA">{intl.formatMessage({ id: "form_qte_20ft" })}</option> */}
-                                                                    </>
-                                                                    : null
-                                        }
-                                    </Form.Control>
-                                </Form.Group>
-                                :
-                                null
-                        }
-                        {
-                            saison !== '0' && quality !== '0' && quantity !== '0' ?
-                                quantity === 'under_900' ?
-                                    Swal.fire({
-                                        text: intl.formatMessage({ id: "under_900kg_msg" }),
-                                        icon: 'info',
-                                        confirmButtonText: intl.formatMessage({ id: "under_900kg_btn" })
-                                    })
-                                        .then((result) => {
-                                            navigate('https://sakando.com')
-                                        })
-                                    :
-                                    <Button variant="primary" type="submit">
-                                        {intl.formatMessage({ id: "form_submit_keyword" })}
-                                    </Button>
-                                : <br />
-                        }
+                                    <Form.Group controlId="country">
+                                        <Form.Label>{intl.formatMessage({ id: "form_TO_country_label" })} <span className="required_star">*</span></Form.Label>
+                                        <Form.Control as="select" name="country" onChange={handleCountryInput} placeholder={intl.formatMessage({ id: "form_country_placeHolder" })} required>
+                                            <option value="">...</option>
+                                            {
+                                                countries.map(c =>
+                                                    <option key={c.id} value={c.name}>{c.name}</option>
+                                                )
+                                            }
+                                        </Form.Control>
+                                        <Form.Control.Feedback type="invalid">{intl.formatMessage({ id: "form_country_validation" })}</Form.Control.Feedback>
+                                    </Form.Group>
+                                </Col>
+                            </Form.Row>
+                        </fieldset>
+                        <fieldset>
+                            <legend>COMMODITY</legend>
+                            <Form.Row>
+                                <Col>
+
+                                    <Form.Group controlId="country">
+                                        <Form.Label>{intl.formatMessage({ id: "form_TO_country_label" })} <span className="required_star">*</span></Form.Label>
+                                        <Form.Control as="select" name="country" onChange={handleCountryInput} placeholder={intl.formatMessage({ id: "form_country_placeHolder" })} required>
+                                            <option value="">...</option>
+                                            {
+                                                countries.map(c =>
+                                                    <option key={c.id} value={c.name}>{c.name}</option>
+                                                )
+                                            }
+                                        </Form.Control>
+                                        <Form.Control.Feedback type="invalid">{intl.formatMessage({ id: "form_country_validation" })}</Form.Control.Feedback>
+                                    </Form.Group>
+                                </Col>
+                                <Col></Col>
+                            </Form.Row>
+                        </fieldset>
+                        <fieldset>
+                            <legend>CONTAINER</legend>
+                            <Form.Row>
+                                <Col>
+
+                                    <Form.Group controlId="country">
+                                        <Form.Label>{intl.formatMessage({ id: "form_containerType_label" })} <span className="required_star">*</span></Form.Label>
+                                        <Form.Control as="select" name="country" onChange={handleCountryInput} placeholder={intl.formatMessage({ id: "form_country_placeHolder" })} required>
+                                            <option value="">...</option>
+                                            {
+                                                countries.map(c =>
+                                                    <option key={c.id} value={c.name}>{c.name}</option>
+                                                )
+                                            }
+                                        </Form.Control>
+                                        <Form.Control.Feedback type="invalid">{intl.formatMessage({ id: "form_country_validation" })}</Form.Control.Feedback>
+                                    </Form.Group>
+                                </Col>
+                                <Col>
+                                    <Form.Group controlId="dock">
+                                        <Form.Label>{intl.formatMessage({ id: "form_containerWeight_label" })}</Form.Label>
+                                        <Form.Control type="number" name="dock" onChange={handleDockInput} placeholder={intl.formatMessage({ id: "form_port_placeHolder" })} />
+                                    </Form.Group>
+                                </Col>
+                            </Form.Row>
+                        </fieldset>
+                        <fieldset>
+                            <legend>DATE</legend>
+                            <Form.Row>
+                                <Col>
+                                    <Form.Group controlId="dock">
+                                        <Form.Label>{intl.formatMessage({ id: "form_ExpectedDeparture_label" })}</Form.Label>
+                                        <Form.Control type="date" name="dock" onChange={handleDockInput} placeholder={intl.formatMessage({ id: "form_port_placeHolder" })} />
+                                    </Form.Group>
+                                </Col>
+                            </Form.Row>
+                        </fieldset>
+                        <Button variant="primary" type="submit">
+                            {intl.formatMessage({ id: "form_submit_keyword" })}
+                        </Button>
+
+
+
                     </Form>
                 </Container>
             </Layout>
