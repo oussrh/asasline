@@ -90,15 +90,14 @@ const Footer = () => {
                 <li>{<Link to="/about">{intl.formatMessage({ id: "about_page" })}</Link>}</li>
                 <li>{<Link to="/services">{intl.formatMessage({ id: "services_page" })}</Link>}</li>
                 <li>{<Link to="/contact">{intl.formatMessage({ id: "contact_page" })}</Link>}</li>
-                <li>{<Link to="/quote">{intl.formatMessage({ id: "devis_page" })}</Link>}</li>
-                <li className="lastElm">{<Link to="/shipping">{intl.formatMessage({ id: "shipping_page" })}</Link>}</li>
+                <li className="lastElm">{<Link to="/quote">{intl.formatMessage({ id: "devis_page" })}</Link>}</li>
               </ul>
 
             </section>
             <section className="footerSecondMenu">
               <h3>{intl.formatMessage({ id: "link_page" })}</h3>
               <ul>
-                {/* <li>{<AnchorLink title="Batrade secondhand clothes" to="/used-clothes">{intl.formatMessage({ id: "prod_clothes" })}</AnchorLink>}</li> */}
+                <li>{<Link to="/privacy">{intl.formatMessage({ id: "PrivacyPolicy_page" })}</Link>}</li>
 
                 {/* <li className="lastElm">{<AnchorLink title="Batrade recycling" to="/recycling">{intl.formatMessage({ id: "prod_recycling" })}</AnchorLink>}</li > */}
               </ul >

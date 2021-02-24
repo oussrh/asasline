@@ -97,12 +97,12 @@
 }
 
 .footerNewsletter button {
-  color: #ef4036;
+  color: #f7af3d;
 }
 
 .footerNewsletter button:hover {
   color: #fff;
-  background-color: #ef4036;
+  background-color: #f7af3d;
 }
 
 .footerNewsletter .form-control {
@@ -110,7 +110,7 @@
 }
 
 .reservedRights {
-  background-color: black;
+  background-color: #0c1836;
   color: #fff;
   text-align: center;
   padding: 10px 0;

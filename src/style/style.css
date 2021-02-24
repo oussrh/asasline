@@ -51,3 +51,25 @@ aside {
   width: 40%;
   padding: 0 0;
 }
+
+/* Proivacy */
+.privacyPageContainer {
+  padding: 50px 0;
+  width: 50vw;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+}
+
+.privacyRow {
+  width: 100%;
+}
+
+.privacyRow ul {
+  margin-left: 50px;
+}
+
+.privacyRow h1,
+.privacyRow h2 {
+  margin: 20px 0;
+}
