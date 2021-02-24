@@ -4,9 +4,10 @@ require("dotenv").config({
 
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Default Starter`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-    author: `@gatsbyjs`,
+    title: `Asasline `,
+    description: `Asasline`,
+    author: `AsasLine`,
+    siteUrl: `https://www.asasline.com`,
   },
   plugins: [
     {
@@ -33,16 +34,14 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-minify-html',
       options: {
-        debug: false, // debug optional, default false
+        debug: false,
         config: {
-          // Enabled default by this plugin
           collapseWhitespace: false,
           minifyCSS: false,
           minifyJS: false,
           removeComments: false,
           removeScriptTypeAttributes: false,
           removeStyleLinkTypeAttributes: false,
-          // Disabled default by html-minifier-terser
           sortAttributes: true,
           useShortDoctype: true
         }
@@ -64,13 +63,14 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `gatsby-starter-default`,
+        name: `AsasLine`,
         short_name: `starter`,
+        description: `AsasLine`,
         start_url: `/`,
-        background_color: `#663399`,
-        theme_color: `#663399`,
-        display: `minimal-ui`,
-        icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
+        background_color: `#f7af3d`,
+        theme_color: `#f7af3d`,
+        display: `standalone`,
+        icon: `src/images/gatsby-icon.png`,
       },
     },
     {
