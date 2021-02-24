@@ -98,8 +98,6 @@ const Footer = () => {
               <h3>{intl.formatMessage({ id: "link_page" })}</h3>
               <ul>
                 <li>{<Link to="/privacy">{intl.formatMessage({ id: "PrivacyPolicy_page" })}</Link>}</li>
-
-                {/* <li className="lastElm">{<AnchorLink title="Batrade recycling" to="/recycling">{intl.formatMessage({ id: "prod_recycling" })}</AnchorLink>}</li > */}
               </ul >
             </section >
             <section className="footerNewsletter">

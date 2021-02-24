@@ -16,41 +16,41 @@ const InfoAndImage = () => {
     const data = useStaticQuery(
         graphql`
     query {
-    allContentfulAboutPage {
-        nodes {
-          id
-          order
-          title
-          node_locale
-          aboutPicture{
-            fluid{
-              ...GatsbyContentfulFluid_withWebp
-            }
-          }
-          aboutText {
-            raw
+        allContentfulInfoAndImage(sort: {fields: order}) {
+            nodes {
+                id
+                imageTitle
+                title
+                node_locale
+                smallText {
+                    raw
+                }
+                image {
+                    fluid {
+                        ...GatsbyContentfulFluid_withWebp
+                    }
+                }
+                order
             }
         }
-      }
     }`)
 
     return (
 
         <section className="infoAndImgContainer">
             {
-                data.allContentfulAboutPage.nodes.filter(artl => artl.node_locale === intl.locale).map(artl => {
+                data.allContentfulInfoAndImage.nodes.filter(artl => artl.node_locale === intl.locale).map(artl => {
                     if (Number(artl.order) % 2 !== 0) {
                         return (
                             <section className="infoAndImgRow ">
-
-
+                                <section className="infoAndImgTdImg" onContextMenu={(e) => e.preventDefault()} role='presentation'>
+                                    <Img fluid={artl.image.fluid} alt={artl.imageTitle} title={artl.imageTitle} />
+                                </section>
                                 <section key={artl.id} className="infoAndImgTdTxt">
                                     <h1>{artl.title}</h1>
-                                    {renderRichText(artl.aboutText)}
+                                    {renderRichText(artl.smallText)}
                                 </section >
-                                <section className="infoAndImgTdImg" onContextMenu={(e) => e.preventDefault()} role='presentation'>
-                                    <Img fluid={artl.aboutPicture.fluid} alt={artl.title} title={artl.title} />
-                                </section>
+
 
                             </section>
                         )
@@ -59,14 +59,14 @@ const InfoAndImage = () => {
                         return (
                             <section className="infoAndImgRow infoAndImgRowReverse">
 
-                                <section className="infoAndImgTdImg" onContextMenu={(e) => e.preventDefault()} role='presentation'>
-                                    <Img fluid={artl.aboutPicture.fluid} alt={artl.title} title={artl.title} />
-                                </section>
 
                                 <section key={artl.id} className="infoAndImgTdTxt">
                                     <h1>{artl.title}</h1>
-                                    {renderRichText(artl.aboutText)}
+                                    {renderRichText(artl.smallText)}
                                 </section >
+                                <section className="infoAndImgTdImg" onContextMenu={(e) => e.preventDefault()} role='presentation'>
+                                    <Img fluid={artl.image.fluid} alt={artl.imageTitle} title={artl.imageTitle} />
+                                </section>
 
                             </section>
 

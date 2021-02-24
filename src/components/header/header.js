@@ -75,8 +75,8 @@ const Header = ({ siteTitle }) => {
 
           </Nav>
 
-          <Nav.Link onClick={() => changeLocale('en')}><img src={english} alt="Batrade english page" title="Batrade english page" /></Nav.Link>
-          <Nav.Link onClick={() => changeLocale('fr')}><img src={francais} alt="Batrade french page" title="Batrade french page" /></Nav.Link>
+          <Nav.Link onClick={() => changeLocale('en')}><img src={english} alt="AsasLine english page" title="AsasLine english page" /></Nav.Link>
+          <Nav.Link onClick={() => changeLocale('fr')}><img src={francais} alt="AsasLine french page" title="AsasLine french page" /></Nav.Link>
         </Navbar.Collapse>
       </Navbar>
 

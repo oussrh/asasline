@@ -8,9 +8,8 @@
 }
 
 .homePageFormContainer button:hover {
-  background-color: #fdd84e;
-  font-weight: bold;
-  border-color: #f8ad34;
+  background-color: #f7af3d;
+  border: 1px solid#0c1836;
 }
 
 .formContact {
