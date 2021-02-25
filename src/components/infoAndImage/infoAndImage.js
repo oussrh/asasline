@@ -7,7 +7,7 @@ import { injectIntl, useIntl } from "gatsby-plugin-intl"
 
 import { renderRichText } from "gatsby-source-contentful/rich-text"
 
-import './InfoAndImage.css'
+import './infoAndImage.css'
 
 
 const InfoAndImage = () => {
