@@ -45,7 +45,7 @@ const CarouselComp = () => {
                                 alt={slide.title ? slide.title : null}
                                 title={slide.title ? slide.title : null}
                             />
-                            <Carousel.Caption>
+                            <Carousel.Caption className="SlideCaption">
                                 {slide.title ? slide.title : null}
                             </Carousel.Caption>
                         </Carousel.Item>

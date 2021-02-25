@@ -20,6 +20,17 @@
   font-size: 30px;
 }
 
+.SlideCaption {
+  margin-bottom: 50px;
+  padding: 20px 50px;
+  text-align: left;
+  width: 100vw;
+  background-color: rgba(0, 0, 0, 0.5);
+  font-size: 30px;
+  font-weight: bold;
+  font-family: Roboto, sans-serif;
+}
+
 /****************************Phones****************************************/
 @media only screen and (max-width: 420px) {
   .carousel {
