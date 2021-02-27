@@ -23,7 +23,7 @@ import { injectIntl, FormattedMessage, useIntl } from "gatsby-plugin-intl"
 
 const DevisPage = () => {
     const intl = useIntl()
-    const endpoint = "/.netlify/functions/hello"
+    const endpoint = "/.netlify/my_functions/sendmail.js"
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
     const [email, setEmail] = useState('');
@@ -32,11 +32,10 @@ const DevisPage = () => {
     const [phone, setPhone] = useState('');
     const [dock, setDock] = useState('');
     const [country, setCountry] = useState('');
-    const [saison, setSaison] = useState('0');
-    const [qualityV, setQualityV] = useState(false);
-    const [quality, setQuality] = useState('0');
-    const [quantity, setQuantity] = useState('0');
-    const [quantityV, setQuantityV] = useState(false);
+    const [service, setService] = useState('0');
+    const [location, setLocation] = useState(false);
+    const [transport, setTransport] = useState(false);
+    const [container, setContainer] = useState("");
     const [validated, setValidated] = useState(false);
     const [result, setResult] = useState(null);
 
@@ -47,6 +46,8 @@ const DevisPage = () => {
     const handleDockInput = (e) => { setDock(e.currentTarget.value) }
     const handleCompanyInput = (e) => { setCompany(e.currentTarget.value) }
     const handleCountryInput = (e) => { setCountry(e.currentTarget.value) }
+    const handleContainerInput = (e) => { setContainer(e.currentTarget.value) }
+
     const handleVatInput = (e) => { setVat(e.currentTarget.value) }
 
     const lang = intl.locale
@@ -65,36 +66,25 @@ const DevisPage = () => {
             }
         }`)
 
-    const handleSaisonSelect = (e) => {
-        if (e.currentTarget.value === '0') {
-            setQualityV(false)
-            setQuantityV(false)
-            setSaison('0')
-            setQuality('0')
-            setQuantity('0')
+    const handleServiceSelect = (e) => {
+        let serv = e.currentTarget.value;
+        console.log(serv)
+        if (service === '0') {
+            setLocation(false)
+            setTransport(false)
+            setService('0')
         }
-        else {
-            setQualityV(true)
-            setSaison(e.currentTarget.value)
+        if (serv === "T") {
+            setTransport(true)
+            setLocation(false)
+            setService(e.currentTarget.value)
         }
-    }
 
-    const handleQualitySelect = (e) => {
-        if (e.currentTarget.value === '0') {
-            setQuantityV(false)
-            setQuality('0')
-            setQuantity('0')
+        else if (serv === "L") {
+            setTransport(false)
+            setLocation(true)
+            setService(e.currentTarget.value)
         }
-        else {
-            setQuantityV(true)
-            setQuality(e.currentTarget.value)
-        }
-    }
-
-    const handleQuatitySelect = (e) => {
-
-        setQuantity(e.currentTarget.value)
-
     }
 
     const handleSubmit = (event) => {
@@ -119,9 +109,8 @@ const DevisPage = () => {
                 vat,
                 country,
                 dock,
-                saison,
-                quality,
-                quantity
+                service,
+                container
             }
 
             axios.post(endpoint, JSON.stringify(data)).then(response => {
@@ -209,103 +198,194 @@ const DevisPage = () => {
                             </Col>
                             <Col></Col>
                         </Form.Row>
-                        <fieldset>
-                            <legend>ROUTE</legend>
-                            <Form.Row>
-                                <Col>
-                                    <Form.Group controlId="country">
-                                        <Form.Label>{intl.formatMessage({ id: "form_FROM_country_label" })} <span className="required_star">*</span></Form.Label>
-                                        <Form.Control as="select" name="country" onChange={handleCountryInput} placeholder={intl.formatMessage({ id: "form_country_placeHolder" })} required>
-                                            <option value="">...</option>
-                                            {
-                                                countries.map(c =>
-                                                    <option key={c.id} value={c.name}>{c.name}</option>
-                                                )
-                                            }
-                                        </Form.Control>
-                                        <Form.Control.Feedback type="invalid">{intl.formatMessage({ id: "form_country_validation" })}</Form.Control.Feedback>
-                                    </Form.Group>
-                                </Col>
-                                <Col>
+                        <Form.Row>
 
-                                    <Form.Group controlId="country">
-                                        <Form.Label>{intl.formatMessage({ id: "form_TO_country_label" })} <span className="required_star">*</span></Form.Label>
-                                        <Form.Control as="select" name="country" onChange={handleCountryInput} placeholder={intl.formatMessage({ id: "form_country_placeHolder" })} required>
-                                            <option value="">...</option>
-                                            {
-                                                countries.map(c =>
-                                                    <option key={c.id} value={c.name}>{c.name}</option>
-                                                )
-                                            }
-                                        </Form.Control>
-                                        <Form.Control.Feedback type="invalid">{intl.formatMessage({ id: "form_country_validation" })}</Form.Control.Feedback>
-                                    </Form.Group>
-                                </Col>
-                            </Form.Row>
-                        </fieldset>
-                        <fieldset>
-                            <legend>COMMODITY</legend>
-                            <Form.Row>
-                                <Col>
-
-                                    <Form.Group controlId="country">
-                                        <Form.Label>{intl.formatMessage({ id: "form_TO_country_label" })} <span className="required_star">*</span></Form.Label>
-                                        <Form.Control as="select" name="country" onChange={handleCountryInput} placeholder={intl.formatMessage({ id: "form_country_placeHolder" })} required>
-                                            <option value="">...</option>
-                                            {
-                                                countries.map(c =>
-                                                    <option key={c.id} value={c.name}>{c.name}</option>
-                                                )
-                                            }
-                                        </Form.Control>
-                                        <Form.Control.Feedback type="invalid">{intl.formatMessage({ id: "form_country_validation" })}</Form.Control.Feedback>
-                                    </Form.Group>
-                                </Col>
-                                <Col></Col>
-                            </Form.Row>
-                        </fieldset>
-                        <fieldset>
-                            <legend>CONTAINER</legend>
-                            <Form.Row>
-                                <Col>
-
-                                    <Form.Group controlId="country">
-                                        <Form.Label>{intl.formatMessage({ id: "form_containerType_label" })} <span className="required_star">*</span></Form.Label>
-                                        <Form.Control as="select" name="country" onChange={handleCountryInput} placeholder={intl.formatMessage({ id: "form_country_placeHolder" })} required>
-                                            <option value="">...</option>
-                                            {
-                                                countries.map(c =>
-                                                    <option key={c.id} value={c.name}>{c.name}</option>
-                                                )
-                                            }
-                                        </Form.Control>
-                                        <Form.Control.Feedback type="invalid">{intl.formatMessage({ id: "form_country_validation" })}</Form.Control.Feedback>
-                                    </Form.Group>
-                                </Col>
-                                <Col>
-                                    <Form.Group controlId="dock">
-                                        <Form.Label>{intl.formatMessage({ id: "form_containerWeight_label" })}</Form.Label>
-                                        <Form.Control type="number" name="dock" onChange={handleDockInput} placeholder={intl.formatMessage({ id: "form_port_placeHolder" })} />
-                                    </Form.Group>
-                                </Col>
-                            </Form.Row>
-                        </fieldset>
-                        <fieldset>
-                            <legend>DATE</legend>
-                            <Form.Row>
-                                <Col>
-                                    <Form.Group controlId="dock">
-                                        <Form.Label>{intl.formatMessage({ id: "form_ExpectedDeparture_label" })}</Form.Label>
-                                        <Form.Control type="date" name="dock" onChange={handleDockInput} placeholder={intl.formatMessage({ id: "form_port_placeHolder" })} />
-                                    </Form.Group>
-                                </Col>
-                            </Form.Row>
-                        </fieldset>
-                        <Button variant="primary" type="submit">
-                            {intl.formatMessage({ id: "form_submit_keyword" })}
-                        </Button>
+                            <Col>
+                                <Button onClick={handleServiceSelect} value="T" className="quoteType" variant="secondary">Transport</Button>
+                            </Col>
+                            <Col>
+                                <Button onClick={handleServiceSelect} value="L" className="quoteType" variant="secondary">Location</Button>
+                            </Col>
 
 
+                        </Form.Row>
+                        {
+                            transport ?
+                                <>
+                                    <h2>Transport</h2>
+                                    <fieldset>
+                                        <legend>ROUTE <span className="line"></span></legend>
+                                        <Form.Row>
+                                            <Col>
+                                                <Form.Group controlId="fromcountry">
+                                                    <Form.Label>{intl.formatMessage({ id: "form_FROM_country_label" })} <span className="required_star">*</span></Form.Label>
+                                                    <Form.Control as="select" name="fromcountry" onChange={handleCountryInput} placeholder={intl.formatMessage({ id: "form_country_placeHolder" })} required>
+                                                        <option value="">...</option>
+                                                        {
+                                                            countries.map(c =>
+                                                                <option key={c.id} value={c.name}>{c.name}</option>
+                                                            )
+                                                        }
+                                                    </Form.Control>
+                                                    <Form.Control.Feedback type="invalid">{intl.formatMessage({ id: "form_fromcountry_validation" })}</Form.Control.Feedback>
+                                                </Form.Group>
+                                            </Col>
+                                            <Col>
+
+                                                <Form.Group controlId="tocountry">
+                                                    <Form.Label>{intl.formatMessage({ id: "form_TO_country_label" })} <span className="required_star">*</span></Form.Label>
+                                                    <Form.Control as="select" name="tocountry" onChange={handleCountryInput} placeholder={intl.formatMessage({ id: "form_country_placeHolder" })} required>
+                                                        <option value="">...</option>
+                                                        {
+                                                            countries.map(c =>
+                                                                <option key={c.id} value={c.name}>{c.name}</option>
+                                                            )
+                                                        }
+                                                    </Form.Control>
+                                                    <Form.Control.Feedback type="invalid">{intl.formatMessage({ id: "form_tocountry_validation" })}</Form.Control.Feedback>
+                                                </Form.Group>
+                                            </Col>
+                                        </Form.Row>
+                                    </fieldset>
+                                    <fieldset>
+                                        <legend>COMMODITY <span className="line"></span></legend>
+                                        <Form.Row>
+                                            <Col>
+                                                <Form.Group controlId="phone">
+                                                    <Form.Label>{intl.formatMessage({ id: "form_commidity_label" })} <span className="required_star">*</span></Form.Label>
+                                                    <Form.Control type="tel" name="phone" onChange={handlePhoneInput} placeholder={intl.formatMessage({ id: "form_commidity_placeHolder" })} required />
+                                                    <Form.Control.Feedback type="invalid">{intl.formatMessage({ id: "form_commodity_validation" })}</Form.Control.Feedback>
+                                                </Form.Group>
+                                            </Col>
+                                            <Col></Col>
+                                        </Form.Row>
+                                    </fieldset>
+                                    <fieldset>
+                                        <legend>CONTAINER <span className="line"></span></legend>
+
+                                        <Form.Row>
+                                            <Col>
+
+                                                <Form.Group controlId="container">
+                                                    <Form.Label>{intl.formatMessage({ id: "form_containerType_label" })} <span className="required_star">*</span></Form.Label>
+                                                    <Form.Control as="select" name="container" onChange={handleContainerInput} placeholder={intl.formatMessage({ id: "form_country_placeHolder" })} required>
+                                                        <option value="">...</option>
+                                                        <option key="1" value="20 Dry Standard">{intl.formatMessage({ id: "form_container20_placeHolder" })}</option>
+                                                        <option key="2" value="40 Dry High">{intl.formatMessage({ id: "form_container40_placeHolder" })}</option>
+                                                    </Form.Control>
+                                                    <Form.Control.Feedback type="invalid">{intl.formatMessage({ id: "form_containerType_validation" })}</Form.Control.Feedback>
+                                                </Form.Group>
+                                            </Col>
+                                            <Col>
+                                                <Form.Group controlId="weight">
+                                                    <Form.Label>{intl.formatMessage({ id: "form_containerWeight_label" })}</Form.Label>
+                                                    <Form.Control type="number" name="dock" onChange={handleDockInput} placeholder={intl.formatMessage({ id: "form_containerWeight_placeHolder" })} />
+                                                    <Form.Control.Feedback type="invalid">{intl.formatMessage({ id: "form_containerWeight_validation" })}</Form.Control.Feedback>
+                                                </Form.Group>
+                                            </Col>
+                                        </Form.Row>
+                                    </fieldset>
+                                    <fieldset>
+                                        <legend>DATE <span className="line"></span></legend>
+                                        <Form.Row>
+                                            <Col>
+                                                <Form.Group controlId="dock">
+                                                    <Form.Label>{intl.formatMessage({ id: "form_ExpectedDeparture_label" })}</Form.Label>
+                                                    <Form.Control type="date" name="dock" onChange={handleDockInput} placeholder={intl.formatMessage({ id: "form_ExpectedDeparture_placeHolder" })} />
+                                                    <Form.Control.Feedback type="invalid">{intl.formatMessage({ id: "form_ExpectedDeparture_validation" })}</Form.Control.Feedback>
+                                                </Form.Group>
+                                            </Col>
+                                        </Form.Row>
+                                    </fieldset>
+                                    <Button variant="primary" type="submit">
+                                        {intl.formatMessage({ id: "form_submit_keyword" })}
+                                    </Button>
+                                </>
+                                : location ?
+
+                                    <>
+                                        <h2>Location</h2>
+                                        <fieldset>
+                                            <legend>ROUTE <span className="line"></span></legend>
+                                            <Form.Row>
+                                                <Col>
+                                                    <Form.Group controlId="fromcountry">
+                                                        <Form.Label>{intl.formatMessage({ id: "form_FROM_country_label" })} <span className="required_star">*</span></Form.Label>
+                                                        <Form.Control as="select" name="fromcountry" onChange={handleCountryInput} placeholder={intl.formatMessage({ id: "form_country_placeHolder" })} required>
+                                                            <option value="">...</option>
+                                                            {
+                                                                countries.map(c =>
+                                                                    <option key={c.id} value={c.name}>{c.name}</option>
+                                                                )
+                                                            }
+                                                        </Form.Control>
+                                                        <Form.Control.Feedback type="invalid">{intl.formatMessage({ id: "form_fromcountry_validation" })}</Form.Control.Feedback>
+                                                    </Form.Group>
+                                                </Col>
+                                                <Col>
+
+                                                </Col>
+                                            </Form.Row>
+                                        </fieldset>
+                                        <fieldset>
+                                            <legend>COMMODITY <span className="line"></span></legend>
+                                            <Form.Row>
+                                                <Col>
+                                                    <Form.Group controlId="phone">
+                                                        <Form.Label>{intl.formatMessage({ id: "form_commidity_label" })} <span className="required_star">*</span></Form.Label>
+                                                        <Form.Control type="tel" name="phone" onChange={handlePhoneInput} placeholder={intl.formatMessage({ id: "form_commidity_placeHolder" })} required />
+                                                        <Form.Control.Feedback type="invalid">{intl.formatMessage({ id: "form_commodity_validation" })}</Form.Control.Feedback>
+                                                    </Form.Group>
+                                                </Col>
+                                                <Col></Col>
+                                            </Form.Row>
+                                        </fieldset>
+                                        <fieldset>
+                                            <legend>CONTAINER <span className="line"></span></legend>
+
+                                            <Form.Row>
+                                                <Col>
+
+                                                    <Form.Group controlId="container">
+                                                        <Form.Label>{intl.formatMessage({ id: "form_containerType_label" })} <span className="required_star">*</span></Form.Label>
+                                                        <Form.Control as="select" name="container" onChange={handleContainerInput} placeholder={intl.formatMessage({ id: "form_country_placeHolder" })} required>
+                                                            <option value="">...</option>
+                                                            <option key="1" value="20 Dry Standard">{intl.formatMessage({ id: "form_container20_placeHolder" })}</option>
+                                                            <option key="2" value="40 Dry High">{intl.formatMessage({ id: "form_container40_placeHolder" })}</option>
+                                                        </Form.Control>
+                                                        <Form.Control.Feedback type="invalid">{intl.formatMessage({ id: "form_containerType_validation" })}</Form.Control.Feedback>
+                                                    </Form.Group>
+                                                </Col>
+                                                <Col>
+                                                    <Form.Group controlId="weight">
+                                                        <Form.Label>{intl.formatMessage({ id: "form_containerWeight_label" })}</Form.Label>
+                                                        <Form.Control type="number" name="dock" onChange={handleDockInput} placeholder={intl.formatMessage({ id: "form_containerWeight_placeHolder" })} />
+                                                        <Form.Control.Feedback type="invalid">{intl.formatMessage({ id: "form_containerWeight_validation" })}</Form.Control.Feedback>
+                                                    </Form.Group>
+                                                </Col>
+                                            </Form.Row>
+                                        </fieldset>
+                                        <fieldset>
+                                            <legend>DATE <span className="line"></span></legend>
+                                            <Form.Row>
+                                                <Col>
+                                                    <Form.Group controlId="dock">
+                                                        <Form.Label>{intl.formatMessage({ id: "form_ExpectedDeparture_label" })}</Form.Label>
+                                                        <Form.Control type="date" name="dock" onChange={handleDockInput} placeholder={intl.formatMessage({ id: "form_ExpectedDeparture_placeHolder" })} />
+                                                        <Form.Control.Feedback type="invalid">{intl.formatMessage({ id: "form_ExpectedDeparture_validation" })}</Form.Control.Feedback>
+                                                    </Form.Group>
+                                                </Col>
+                                            </Form.Row>
+                                        </fieldset>
+                                        <Button variant="primary" type="submit">
+                                            {intl.formatMessage({ id: "form_submit_keyword" })}
+                                        </Button>
+                                    </>
+                                    :
+                                    <>
+
+                                    </>
+                        }
 
                     </Form>
                 </Container>

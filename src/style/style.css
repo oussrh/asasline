@@ -30,17 +30,21 @@ aside {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  padding-top: 50px;
+  padding-bottom: 50px;
 }
 
 .aboutRowfull {
   margin: 50px auto;
   width: 60vw;
   padding: 0 20px;
+  overflow: visible !important;
 }
 
 .aboutRow section {
   width: 60%;
   padding: 0 20px;
+  padding-right: 100px;
 }
 
 .txtRightImg {
@@ -49,7 +53,18 @@ aside {
 
 .aboutRow figure {
   width: 40%;
-  padding: 0 0;
+  margin: 0;
+  padding: 0;
+  background-color: #f7af3d;
+}
+
+.gatsby-image-wrapper {
+  overflow: visible !important;
+}
+.aboutRow figure img {
+  margin-top: -50px !important;
+  margin-left: -50px !important;
+  overflow: visible;
 }
 
 /* Proivacy */
@@ -72,4 +87,37 @@ aside {
 .privacyRow h1,
 .privacyRow h2 {
   margin: 20px 0;
+}
+
+/* Quote */
+
+.estimation_container {
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+.quoteType {
+  width: 100%;
+  margin: 20px 0;
+}
+
+.estimation_container legend {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.line {
+  display: block;
+  background-color: #f7af3d;
+  width: 40%;
+  height: 3px;
+}
+
+.quoteType {
+  background-color: #0c1836;
+}
+
+.quoteType:hover {
+  background-color: #0c1836;
+  border: 1px solid #f7af3d;
 }

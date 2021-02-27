@@ -67,9 +67,13 @@ const AboutPage = () => {
                                         <h1>{artl.title}</h1>
                                         {renderRichText(artl.aboutText)}
                                     </section >
+
                                     <figure onContextMenu={(e) => e.preventDefault()} role='presentation'>
+
                                         <Img fluid={artl.aboutPicture.fluid} alt={artl.title} title={artl.title} />
+
                                     </figure>
+
                                 </section>
                             )
                         }
