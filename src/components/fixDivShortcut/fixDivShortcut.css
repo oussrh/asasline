@@ -1,0 +1,25 @@
+.fixDiv {
+  position: fixed;
+  width: 70px;
+  left: 0;
+  top: 30%;
+  background-color: #b4b4b4;
+  padding-right: 5px;
+  z-index: 1000 !important;
+}
+
+.squareBtn {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  width: 100%;
+  height: 70px;
+  background-color: #e8e9e8;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #f8ad34;
+}
+
+.squareBtn:hover {
+  border: 1px solid #f8ad34;
+}

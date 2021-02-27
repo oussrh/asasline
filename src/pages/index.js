@@ -6,6 +6,7 @@ import Carousel from "../components/carousel/carousel"
 import GeneralInfo from "../components/generalInfo/genralInfo"
 import InfoAndImage from "../components/infoAndImage/infoAndImage"
 import ContactForm from "../components/contactForm/contactForm"
+import FixedDiv from "../components/fixDivShortcut/fixDivShortcut"
 
 import { useIntl } from "gatsby-plugin-intl"
 
@@ -20,6 +21,7 @@ const IndexPage = () => {
       <GeneralInfo />
       <InfoAndImage />
       <ContactForm />
+      <FixedDiv />
     </Layout>
   )
 
