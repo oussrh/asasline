@@ -11,7 +11,7 @@ exports.handler = async function (event, context) {
     })
 
     let info = await transporter.sendMail({
-        from: 'AsasLine Team" <contact@asasline.com>',
+        from: 'AsasLine Team <contact@asasline.com>',
         to: 'ousrh7@gmail.com',
         subject: 'Test',
         text: 'hello world',
