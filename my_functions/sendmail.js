@@ -1,6 +1,21 @@
+const nodemailer = require('nodemailer');
+
 exports.handler = async function (event, context) {
-    return {
-        statusCode: 200,
-        body: JSON.stringify({ message: "Hello World" })
-    };
+
+    let transporter = await nodemailer.createTransport({
+        service: "Outlook365",
+        auth: {
+            user: 'contact@asasline.com',
+            pass: 'MSAs@sL1ne2021**'
+        },
+    })
+
+    let info = await transporter.sendMail({
+        from: 'contact@asasline.com',
+        to: 'ousrh7@gmail.com',
+        subject: 'Test',
+        text: 'hello world',
+        html: '<h1>TEST</h1>'
+    })
+};
 }
