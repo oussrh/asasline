@@ -17,5 +17,6 @@ exports.handler = async function (event, context) {
         text: 'hello world',
         html: '<h1>TEST</h1>'
     })
-};
+
+    return info
 }
