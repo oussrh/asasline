@@ -42,9 +42,9 @@ const DevisPage = () => {
     const [expectedDate, setExpectedDate] = useState('');
 
     const [locCountry, setLocCountry] = useState('');
-    const [locCommodity, setLocCommodity] = useState('');
     const [locContainerType, setLocContainerType] = useState('');
-    const [locDate, setLocDate] = useState('');
+    const [locStartDate, setLocStartDate] = useState('');
+    const [locEndDate, setLocEndDate] = useState('');
 
 
     const [validated, setValidated] = useState(false);
@@ -64,9 +64,9 @@ const DevisPage = () => {
     const handleExpectedDateInput = (e) => { setExpectedDate(e.currentTarget.value) }
 
     const handleLocCountryInput = (e) => { setLocCountry(e.currentTarget.value) }
-    const handleLocCommodityInput = (e) => { setLocCommodity(e.currentTarget.value) }
     const handleLocContainerTypeInput = (e) => { setLocContainerType(e.currentTarget.value) }
-    const handleLocDateInput = (e) => { setLocDate(e.currentTarget.value) }
+    const handleExpectedStartDateInput = (e) => { setLocStartDate(e.currentTarget.value) }
+    const handleExpectedEndDateInput = (e) => { setLocEndDate(e.currentTarget.value) }
 
 
     const handleVatInput = (e) => { setVat(e.currentTarget.value) }
@@ -136,9 +136,10 @@ const DevisPage = () => {
                 weight,
                 expectedDate,
                 locCountry,
-                locCommodity,
                 locContainerType,
-                locDate
+                locStartDate,
+                locEndDate
+
             }
 
             console.log(data)
@@ -281,7 +282,7 @@ const DevisPage = () => {
                                         <legend>COMMODITY <span className="line"></span></legend>
                                         <Form.Row>
                                             <Col>
-                                                <Form.Group controlId="phone">
+                                                <Form.Group controlId="commodity">
                                                     <Form.Label>{intl.formatMessage({ id: "form_commidity_label" })} <span className="required_star">*</span></Form.Label>
                                                     <Form.Control type="tel" name="phone" onChange={handleCommodityInput} placeholder={intl.formatMessage({ id: "form_commidity_placeHolder" })} required />
                                                     <Form.Control.Feedback type="invalid">{intl.formatMessage({ id: "form_commodity_validation" })}</Form.Control.Feedback>
@@ -319,11 +320,13 @@ const DevisPage = () => {
                                         <legend>DATE <span className="line"></span></legend>
                                         <Form.Row>
                                             <Col>
-                                                <Form.Group controlId="dock">
+                                                <Form.Group controlId="startLocDate">
                                                     <Form.Label>{intl.formatMessage({ id: "form_ExpectedDeparture_label" })}</Form.Label>
                                                     <Form.Control type="date" name="dock" onChange={handleExpectedDateInput} placeholder={intl.formatMessage({ id: "form_ExpectedDeparture_placeHolder" })} />
                                                     <Form.Control.Feedback type="invalid">{intl.formatMessage({ id: "form_ExpectedDeparture_validation" })}</Form.Control.Feedback>
                                                 </Form.Group>
+                                            </Col>
+                                            <Col>
                                             </Col>
                                         </Form.Row>
                                     </fieldset>
@@ -339,35 +342,15 @@ const DevisPage = () => {
                                             <legend>ROUTE <span className="line"></span></legend>
                                             <Form.Row>
                                                 <Col>
-                                                    <Form.Group controlId="fromcountry">
+                                                    <Form.Group controlId="locfromcountry">
                                                         <Form.Label>{intl.formatMessage({ id: "form_FROM_country_label" })} <span className="required_star">*</span></Form.Label>
-                                                        <Form.Control as="select" name="fromcountry" onChange={handleLocCountryInput} placeholder={intl.formatMessage({ id: "form_country_placeHolder" })} required>
-                                                            <option value="">...</option>
-                                                            {
-                                                                countries.map(c =>
-                                                                    <option key={c.id} value={c.name}>{c.name}</option>
-                                                                )
-                                                            }
-                                                        </Form.Control>
+                                                        <Form.Control type="tel" name="locfromcountry" onChange={handleLocCountryInput} placeholder={intl.formatMessage({ id: "form_country_placeHolder" })} required />
                                                         <Form.Control.Feedback type="invalid">{intl.formatMessage({ id: "form_fromcountry_validation" })}</Form.Control.Feedback>
                                                     </Form.Group>
                                                 </Col>
                                                 <Col>
 
                                                 </Col>
-                                            </Form.Row>
-                                        </fieldset>
-                                        <fieldset>
-                                            <legend>COMMODITY <span className="line"></span></legend>
-                                            <Form.Row>
-                                                <Col>
-                                                    <Form.Group controlId="phone">
-                                                        <Form.Label>{intl.formatMessage({ id: "form_commidity_label" })} <span className="required_star">*</span></Form.Label>
-                                                        <Form.Control type="tel" name="phone" onChange={handleLocCommodityInput} placeholder={intl.formatMessage({ id: "form_commidity_placeHolder" })} required />
-                                                        <Form.Control.Feedback type="invalid">{intl.formatMessage({ id: "form_commodity_validation" })}</Form.Control.Feedback>
-                                                    </Form.Group>
-                                                </Col>
-                                                <Col></Col>
                                             </Form.Row>
                                         </fieldset>
                                         <fieldset>
@@ -395,9 +378,16 @@ const DevisPage = () => {
                                             <legend>DATE <span className="line"></span></legend>
                                             <Form.Row>
                                                 <Col>
-                                                    <Form.Group controlId="dock">
+                                                    <Form.Group controlId="startLocDate">
                                                         <Form.Label>{intl.formatMessage({ id: "form_ExpectedDeparture_label" })}</Form.Label>
-                                                        <Form.Control type="date" name="dock" onChange={handleLocDateInput} placeholder={intl.formatMessage({ id: "form_ExpectedDeparture_placeHolder" })} />
+                                                        <Form.Control type="date" name="dock" onChange={handleExpectedStartDateInput} placeholder={intl.formatMessage({ id: "form_ExpectedDeparture_placeHolder" })} />
+                                                        <Form.Control.Feedback type="invalid">{intl.formatMessage({ id: "form_ExpectedDeparture_validation" })}</Form.Control.Feedback>
+                                                    </Form.Group>
+                                                </Col>
+                                                <Col>
+                                                    <Form.Group controlId="endLocDate">
+                                                        <Form.Label>{intl.formatMessage({ id: "form_ExpectedDeparture_label" })}</Form.Label>
+                                                        <Form.Control type="date" name="dock" onChange={handleExpectedEndDateInput} placeholder={intl.formatMessage({ id: "form_ExpectedDeparture_placeHolder" })} />
                                                         <Form.Control.Feedback type="invalid">{intl.formatMessage({ id: "form_ExpectedDeparture_validation" })}</Form.Control.Feedback>
                                                     </Form.Group>
                                                 </Col>
