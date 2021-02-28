@@ -67,6 +67,18 @@ aside {
   overflow: visible;
 }
 
+/* Service page */
+.servicePageContainer {
+  padding: 50px 0;
+  width: 70vw;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+}
+.serviceGeneralInfoRow {
+  margin: 20px 0;
+}
+
 /* Proivacy */
 .privacyPageContainer {
   padding: 50px 0;
@@ -90,6 +102,10 @@ aside {
 }
 
 /* Quote */
+
+.quoteGeneralInfo {
+  margin: 50px 0;
+}
 
 .estimation_container {
   margin-top: 50px;
@@ -120,4 +136,9 @@ aside {
 .quoteType:hover {
   background-color: #0c1836;
   border: 1px solid #f7af3d;
+}
+
+/* Service Page */
+.servicePageContainer {
+  width: 70vw;
 }

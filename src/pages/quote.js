@@ -1,5 +1,6 @@
 // @ts-nocheck
 import React, { useState } from "react"
+import { useStaticQuery, graphql } from "gatsby"
 import { navigate } from 'gatsby'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
@@ -9,8 +10,7 @@ import addToMailchimp from 'gatsby-plugin-mailchimp'
 import axios from 'axios'
 import Swal from 'sweetalert2'
 
-import { useStaticQuery, graphql } from "gatsby"
-
+import { renderRichText } from "gatsby-source-contentful/rich-text"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
@@ -23,6 +23,7 @@ import { injectIntl, FormattedMessage, useIntl } from "gatsby-plugin-intl"
 
 const DevisPage = () => {
     const intl = useIntl()
+
     const endpoint = "/.netlify/functions/sendmail"
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
@@ -85,6 +86,16 @@ const DevisPage = () => {
                     }
                 }
             }
+            allContentfulQuotePage {
+                nodes {
+                    title
+                    node_locale
+                    id
+                    quoteText {
+                        raw
+                    }
+                }
+            }
         }`)
 
     const handleServiceSelect = (e) => {
@@ -142,7 +153,6 @@ const DevisPage = () => {
 
             }
 
-            console.log(data)
             axios.post(endpoint, JSON.stringify(data)).then(response => {
                 console.log(response)
                 if (response.status !== 200) {
@@ -177,7 +187,17 @@ const DevisPage = () => {
             <Layout>
                 <SEO title={intl.formatMessage({ id: "devis_page" })} />
                 <Container className="estimation_container">
-                    <h1><FormattedMessage id="devis_page" /></h1>
+
+                    {
+                        qdata.allContentfulQuotePage.nodes.filter(artl => artl.node_locale === intl.locale).map(artl => {
+                            return (
+                                <section className="quoteGeneralInfo">
+                                    <h1>{artl.title}</h1>
+                                    <p>{renderRichText(artl.quoteText)}</p>
+                                </section>
+                            )
+                        })
+                    }
                     <Form noValidate validated={validated} onSubmit={handleSubmit}>
                         <Form.Row>
                             <Col>

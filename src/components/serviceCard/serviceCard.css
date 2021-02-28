@@ -1,0 +1,38 @@
+/* Service card */
+
+.ServicesContainer {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+.Service {
+  margin: 50px auto;
+  width: 30%;
+  background-color: #0c1836;
+  color: aliceblue;
+}
+
+.Service .gatsby-image-wrapper {
+  height: 200px;
+}
+.Service .card-title {
+  font-family: Roboto, sans-serif;
+  font-weight: bolder;
+  text-align: center;
+  padding: 20px 0;
+}
+
+.Service .card-text p {
+  text-align: left;
+}
+
+.Service .card-body {
+  background-color: #e8e9e8;
+  color: black;
+  padding: 50px 50px;
+}
+
+.Service ul {
+  margin-left: 50px;
+}

@@ -3,7 +3,7 @@ import { useStaticQuery, graphql } from "gatsby"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 
-import Img from "gatsby-image"
+import ServiceCard from "../components/serviceCard/serviceCard"
 
 
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -48,19 +48,19 @@ const ServicesPage = () => {
                 title={seoTitle}
                 description={seoDescription}
             />
-            <article className="aboutPageContainer">
-
+            <article className="servicePageContainer">
 
                 {
                     data.allContentfulServicesPage.nodes.filter(artl => artl.node_locale === intl.locale).map(artl => {
 
                         return (
-                            <section className="aboutRow">
+                            <section className="serviceGeneralInfoRow">
 
                                 <section key={artl.id}>
                                     <h1>{artl.title}</h1>
                                     {renderRichText(artl.servicesText)}
                                 </section >
+                                <ServiceCard />
                             </section>
                         )
 
