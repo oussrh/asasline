@@ -42,7 +42,7 @@
     height: fit-content;
   }
   .infoAndImgRow {
-    background-color: blueviolet;
+    background-color: #0a132a;
     display: flex;
     flex-direction: column;
     width: 100%;
