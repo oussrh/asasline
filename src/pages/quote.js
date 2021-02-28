@@ -23,7 +23,7 @@ import { injectIntl, FormattedMessage, useIntl } from "gatsby-plugin-intl"
 
 const DevisPage = () => {
     const intl = useIntl()
-    const endpoint = "/.netlify/my_functions/sendmail"
+    const endpoint = "/.netlify/functions/sendmail"
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
     const [email, setEmail] = useState('');

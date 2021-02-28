@@ -2,7 +2,7 @@ const nodemailer = require('nodemailer');
 
 exports.handler = async function (event, context) {
 
-    let data = await JSON.parse(event.body)
+    //let data = await JSON.parse(event.body)
 
     let transporter = await nodemailer.createTransport({
         service: "Outlook365",
@@ -17,7 +17,7 @@ exports.handler = async function (event, context) {
         to: 'ousrh7@gmail.com',
         subject: 'Test',
         text: 'hello wo.rld',
-        html: `<h1>${data.fromCountry}</h1>`
+        html: `<h1></h1>`
     })
 
     return info
