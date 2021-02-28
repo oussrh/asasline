@@ -142,3 +142,53 @@ aside {
 .servicePageContainer {
   width: 70vw;
 }
+
+/****************************Phones****************************************/
+@media only screen and (max-width: 420px) {
+  /* About page */
+  .aboutRow {
+    margin: 20px auto;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: space-between;
+    padding-top: 0px;
+    padding-bottom: 0px;
+  }
+
+  .aboutRowRevers {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+
+  .aboutRowfull {
+    width: 60vw;
+    padding: 0 20px;
+    overflow: visible !important;
+  }
+
+  .aboutRow section {
+    width: 100%;
+    padding: 0px 20px;
+  }
+
+  .txtRightImg {
+    padding-left: 20px !important;
+  }
+
+  .aboutRow figure {
+    width: 80%;
+    margin: 20px auto;
+    padding: 0;
+  }
+
+  .gatsby-image-wrapper {
+    overflow: visible !important;
+  }
+  .aboutRow figure img {
+    margin-top: -10px !important;
+    margin-left: -10px !important;
+    overflow: visible;
+  }
+}

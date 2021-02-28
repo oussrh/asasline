@@ -7,8 +7,8 @@ exports.handler = async function (event, context) {
     let transporter = await nodemailer.createTransport({
         service: "Outlook365",
         auth: {
-            user: 'contact@asasline.com',
-            pass: 'MSAs@sL1ne2021**'
+            user: process.env.QUOTE_EMAIL,
+            pass: process.env.QUOTE_EMAIL_PWD
         },
     })
     let recap = await "";
@@ -45,7 +45,7 @@ exports.handler = async function (event, context) {
                 <th style="text-align: left;padding-right: 20px">From</th>
                 <td>${data.fromCountry}</td>
             <tr>
-            <th style="text-align: left;padding-right: 20px">Service ${process.env.CONTENTFUL_ACCESS_TOKEN}</th>
+            <th style="text-align: left;padding-right: 20px">Service</th>
             <td>Transport</td>
             <tr>
             <tr>
@@ -77,8 +77,8 @@ exports.handler = async function (event, context) {
 
         let info = await transporter.sendMail({
             from: 'AsasLine Team <contact@asasline.com>',
-            to: 'ousrh7@gmail.com',
-            bcc: 'ouss_rh@hotmail.com',
+            to: data.email,
+            bcc: process.env.QUOTE_EMAIL,
             subject: 'Quote Request',
             text: 'Following up on your price request, our team would like to sincerely thank you for the trust you place in us. \n AsasLine thanks you for your online quote request. One of our advisor will study your project and will contact you as soon as possible',
             html: `<table style = "margin: 0 auto; width: 80%;" >
@@ -229,8 +229,8 @@ exports.handler = async function (event, context) {
         }
         let info = await transporter.sendMail({
             from: 'AsasLine Team <contact@asasline.com>',
-            to: 'ousrh7@gmail.com',
-            bcc: 'ouss_rh@hotmail.com',
+            to: data.email,
+            bcc: process.env.QUOTE_EMAIL,
             subject: 'Faisant suite à votre demande de prix, notre équipe tenait à vous remercier sincèrement de la confiance que vous nous accordez.\n AsasLine vous remercie de votre demande de devis en ligne. Un conseiller sécurité va étudier votre projet et vous contactera dans les plus bref delais',
             text: 'Demande de Devis',
             html: `<table style = "margin: 0 auto;" width: 80 %; ";>

@@ -51,3 +51,25 @@
 .homePageconatctText p {
   margin-bottom: 20px;
 }
+
+/****************************Phones****************************************/
+@media only screen and (max-width: 420px) {
+  .homePageconatctText {
+    display: none;
+  }
+
+  .formContact form {
+    width: 80vw;
+  }
+}
+
+/************************Tabellete**************************************** */
+@media only screen and (min-width: 421px) and (max-width: 1025px) {
+  .homePageconatctText {
+    display: none;
+  }
+
+  .formContact form {
+    width: 80vw;
+  }
+}

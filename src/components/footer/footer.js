@@ -68,7 +68,7 @@ const Footer = () => {
               <p>
                 {intl.formatMessage({ id: "footerAboutText" })}
               </p>
-              <p>{intl.formatMessage({ id: "contactpageCity" })} - {intl.formatMessage({ id: "contactpageCountry" })}</p>
+
               <ul>
                 <li><FontAwesomeIcon icon={faPhoneAlt} /> {intl.formatMessage({ id: "phone_number" })}</li>
                 <li><FontAwesomeIcon icon={faEnvelope} /> contact(@)asasline.com</li>
@@ -76,10 +76,10 @@ const Footer = () => {
               </ul>
               <ul className="footerScoialNetwork">
                 <li>
-                  <a href="https://facebook.com/asasline" target='_blank' rel="noreferrer" title="Asasline facebook page" aria-label="Asasline facebook page"><FontAwesomeIcon icon={faFacebookF} /></a>
+                  <a href="https://facebook.com/asas.lines" target='_blank' rel="noreferrer" title="Asasline facebook page" aria-label="Asasline facebook page"><FontAwesomeIcon icon={faFacebookF} /></a>
                 </li>
                 <li>
-                  <a href="https://instagram.com/asasline" target='_blank' rel="noreferrer" title="Asasline instagram page" aria-label="Asasline instagram page"><FontAwesomeIcon icon={faInstagram} /></a>
+                  <a href="https://instagram.com/asas.line" target='_blank' rel="noreferrer" title="Asasline instagram page" aria-label="Asasline instagram page"><FontAwesomeIcon icon={faInstagram} /></a>
                 </li>
               </ul>
             </section>

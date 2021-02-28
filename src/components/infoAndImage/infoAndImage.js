@@ -42,13 +42,15 @@ const InfoAndImage = () => {
                 data.allContentfulInfoAndImage.nodes.filter(artl => artl.node_locale === intl.locale).map(artl => {
                     if (Number(artl.order) % 2 !== 0) {
                         return (
-                            <section className="infoAndImgRow ">
+                            <section className="infoAndImgRow">
                                 <section className="infoAndImgTdImg" onContextMenu={(e) => e.preventDefault()} role='presentation'>
                                     <Img fluid={artl.image.fluid} alt={artl.imageTitle} title={artl.imageTitle} />
                                 </section>
                                 <section key={artl.id} className="infoAndImgTdTxt">
-                                    <h1>{artl.title}</h1>
-                                    {renderRichText(artl.smallText)}
+                                    <div>
+                                        <h1>{artl.title}</h1>
+                                        {renderRichText(artl.smallText)}
+                                    </div>
                                 </section >
 
 
@@ -61,8 +63,10 @@ const InfoAndImage = () => {
 
 
                                 <section key={artl.id} className="infoAndImgTdTxt">
-                                    <h1>{artl.title}</h1>
-                                    {renderRichText(artl.smallText)}
+                                    <div>
+                                        <h1>{artl.title}</h1>
+                                        {renderRichText(artl.smallText)}
+                                    </div>
                                 </section >
                                 <section className="infoAndImgTdImg" onContextMenu={(e) => e.preventDefault()} role='presentation'>
                                     <Img fluid={artl.image.fluid} alt={artl.imageTitle} title={artl.imageTitle} />

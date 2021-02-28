@@ -79,7 +79,7 @@ const AboutPage = () => {
                         }
                         else {
                             return (
-                                <section className="aboutRow" >
+                                <section className="aboutRow aboutRowRevers" >
 
                                     <figure onContextMenu={(e) => e.preventDefault()} role='presentation'>
                                         <Img fluid={artl.aboutPicture.fluid} alt={artl.title} title={artl.title} />

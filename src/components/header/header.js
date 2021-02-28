@@ -6,6 +6,7 @@ import AniLink from "gatsby-plugin-transition-link/AniLink"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPhoneAlt } from '@fortawesome/free-solid-svg-icons'
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons'
+import { faClock } from '@fortawesome/free-solid-svg-icons'
 import { faFacebookF } from '@fortawesome/free-brands-svg-icons'
 import { faInstagram } from '@fortawesome/free-brands-svg-icons'
 
@@ -43,15 +44,16 @@ const Header = ({ siteTitle }) => {
         <ul className="infoList">
           <li><FontAwesomeIcon icon={faPhoneAlt} style={{ fontSize: "16px" }} />&nbsp;{intl.formatMessage({ id: "phone_number" })}</li>
           <li><FontAwesomeIcon icon={faEnvelope} style={{ fontSize: "16px" }} />&nbsp;contact(@)asasline.com</li>
+          <li><FontAwesomeIcon icon={faClock} style={{ fontSize: "16px" }} />&nbsp;{intl.formatMessage({ id: "opning_days" })}</li>
         </ul>
         <ul className="socialNet">
           <li>
-            <a href="https://facebook.com/asasline" target="_blank" rel="noreferrer">
+            <a href="https://facebook.com/asas.lines" target="_blank" rel="noreferrer">
               <FontAwesomeIcon icon={faFacebookF} style={{ fontSize: "16px" }} />
             </a>
           </li>
           <li>
-            <a href="https://instagram.com/asasline" target="_blank" rel="noreferrer">
+            <a href="https://instagram.com/asas.line" target="_blank" rel="noreferrer">
               <FontAwesomeIcon icon={faInstagram} style={{ fontSize: "16px" }} />
             </a>
           </li>
