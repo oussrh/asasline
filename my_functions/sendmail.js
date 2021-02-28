@@ -17,24 +17,24 @@ exports.handler = async function (event, context) {
         if (data.service == "L") {
             recap = await `
                     <tr>
-                        <th>Service</th>
+                        <th style="text-align: left;margin-right: 20px">Service</th>
                         <td>Container renting</td>
                     <tr>
         
                     <tr>
-                        <th>Pick up</th>
+                        <th style="text-align: left;margin-right: 20px">Pick up</th>
                         <td>${data.locCountry}</td>
                     <tr>
                     <tr>
-                        <th>Container type</th>
+                        <th style="text-align: left;margin-right: 20px">Container type</th>
                         <td>${data.locContainerType}</td>
                     <tr>
                     <tr>
-                        <th>Start date of location</th>
+                        <th style="text-align: left;margin-right: 20px">Start date of location</th>
                         <td>${data.locStartDate}</td>
                     <tr>
                     <tr>
-                        <th>End date of location</th>
+                        <th style="text-align: left;margin-right: 20px">End date of location</th>
                         <td>${data.locEndDate}</td>
                     <tr>
                `}
@@ -45,27 +45,27 @@ exports.handler = async function (event, context) {
             <td>Transport</td>
             <tr>
             <tr>
-                <th>From</th>
+                <th style="text-align: left;margin-right: 20px">From</th>
                 <td>${data.fromCountry}</td>
             <tr>
             <tr>
-                <th>To</th>
+                <th style="text-align: left;margin-right: 20px">To</th>
                 <td>${data.toCountry}</td>
             <tr>
             <tr>
-                <th>Commodity</th>
+                <th style="text-align: left;margin-right: 20px">Commodity</th>
                 <td>${data.commodity}</td>
             <tr>
             <tr>
-                <th>Container type</th>
+                <th style="text-align: left;margin-right: 20px">Container type</th>
                 <td>${data.locContainerType}</td>
             <tr>
             <tr>
-                <th>Weight (Kg)</th>
+                <th style="text-align: left;margin-right: 20px">Weight (Kg)</th>
                 <td>${data.weight}</td>
             <tr>
             <tr>
-                <th>Departure date</th>
+                <th style="text-align: left;margin-right: 20px">Departure date</th>
                 <td>${data.expectedDate}</td>
             <tr>`
 
@@ -76,8 +76,8 @@ exports.handler = async function (event, context) {
             to: 'ousrh7@gmail.com',
             bcc: 'ouss_rh@hotmail.com',
             subject: 'Quote Request',
-            text: 'Following up on your price request, our team would like to sincerely thank you for the trust you place in us. \n AsasLine thanks you for your online quote request. A security advisor will study your project and will contact you as soon as possible',
-            html: `< table style = "margin: 0 auto; width: 80%;" >
+            text: 'Following up on your price request, our team would like to sincerely thank you for the trust you place in us. \n AsasLine thanks you for your online quote request. One of our advisor will study your project and will contact you as soon as possible',
+            html: `<table style = "margin: 0 auto; width: 80%;" >
         <tr>
             <th style="background-color:#f7af3d; height: 20px;">
 
@@ -91,14 +91,14 @@ exports.handler = async function (event, context) {
         </tr>
         <tr>
             <td style="padding: 0 20px; font-size: 18px; font-family: sans-serif;">
-                <p>Madame, Monsieur,</p>
-                <p>Faisant suite à votre demande de prix, notre équipe tenait à vous remercier sincèrement de la confiance que vous nous accordez.</p>
-                <p><b>AsasLine</b> vous remercie de votre demande de devis en ligne. Un conseiller sécurité va étudier votre projet et vous contactera dans les plus bref delais</p>
+                <p>Dear,</p>
+                <p>Following up on your price request, our team would like to sincerely thank you for the trust you place in us.</p>
+                <p><b>AsasLine</b> thanks you for your online quote request. One of our advisor will study your project and will contact you as soon as possible</p>
             </td>
         </tr>
         <tr>
             <td style="font-size: 18px; font-family: sans-serif;">
-                <p></p> 
+                <p>Please find below the summary of your request:</p> 
                 <table>
                     ${recap}
                 </table
@@ -113,9 +113,9 @@ exports.handler = async function (event, context) {
         </tr>
         <tr>
             <td style="background-color: #0c1836; padding: 50px 0; ">
-                <p style="text-align:center; color:#ffffff;font-family: sans-serif; margin-bottom: 20px;">
-                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Follow us</p>
+                
                 <ul style="text-align: center;">
+                <p style="text-align:center; color:#ffffff;font-family: sans-serif; margin-bottom: 20px;">Follow us</p>
                     <li style="display: inline; text-decoration: none; color: #ffffff; "><a
                             href="https://facebook.com/asasline" target="_blank"
                             style="color: #ffffff; text-decoration: none; font-family: sans-serif;">Facebook</a></li>
@@ -139,32 +139,32 @@ exports.handler = async function (event, context) {
         if (data.service == "T") {
             recap = await `
                 <tr>
-                    <th>Service</th>
+                    <th style="text-align: left;margin-right: 20px">Service</th>
                     <td>Transport</td>
                 <tr>
 
                 <tr>
-                    <th>De</th>
+                    <th style="text-align: left;margin-right: 20px">De</th>
                     <td>${data.fromCountry}</td>
                 <tr>
                 <tr>
-                    <th>À</th>
+                    <th style="text-align: left;margin-right: 20px">À</th>
                     <td>${data.toCountry}</td>
                 <tr>
                 <tr>
-                    <th>Type de marchendise</th>
+                    <th style="text-align: left;margin-right: 20px">Type de marchendise</th>
                     <td>${data.commodity}</td>
                 <tr>
                 <tr>
-                    <th>Type de contenneur</th>
+                <th style="text-align: left;margin-right: 20px">Type de contenneur</th>
                     <td>${data.locContainerType}</td>
                 <tr>
                 <tr>
-                    <th>Poids (Kg)</th>
+                    <th style="text-align: left;margin-right: 20px">Poids (Kg)</th>
                     <td>${data.weight} Kg</td>
                 <tr>
                 <tr>
-                    <th>Date de depart</th>
+                    <th style="text-align: left;margin-right: 20px">Date de depart</th>
                     <td>${data.expectedDate}</td>
                 <tr>
            `
@@ -173,24 +173,24 @@ exports.handler = async function (event, context) {
         else {
             recap = await `
             <tr>
-                <th>Service</th>
+                <th style="text-align: left;margin-right: 20px">Service</th>
                 <td>Location de contenaire</td>
             <tr>
 
             <tr>
-                <th>Point de retrait</th>
+                <th style="text-align: left;margin-right: 20px">Point de retrait</th>
                 <td>${data.locCountry}</td>
             <tr>
             <tr>
-                <th>Type de conteneur</th>
+                <th style="text-align: left;margin-right: 20px">Type de conteneur</th>
                 <td>${data.locContainerType}</td>
             <tr>
             <tr>
-                <th>Debut de location</th>
+                <th style="text-align: left;margin-right: 20px">Debut de location</th>
                 <td>${data.locStartDate}</td>
             <tr>
             <tr>
-                <th>Fin de location</th>
+                <th style="text-align: left;margin-right: 20px">Fin de location</th>
                 <td>${data.locEndDate}</td>
             <tr>
        `
@@ -202,7 +202,7 @@ exports.handler = async function (event, context) {
             bcc: 'ouss_rh@hotmail.com',
             subject: 'Faisant suite à votre demande de prix, notre équipe tenait à vous remercier sincèrement de la confiance que vous nous accordez.\n AsasLine vous remercie de votre demande de devis en ligne. Un conseiller sécurité va étudier votre projet et vous contactera dans les plus bref delais',
             text: 'Demande de Devis',
-            html: `< table style = "margin: 0 auto;" width: 80 %; ";>
+            html: `<table style = "margin: 0 auto;" width: 80 %; ";>
                     < tr >
                     <th style="background-color:#f7af3d; height: 20px;">
 
@@ -223,7 +223,7 @@ exports.handler = async function (event, context) {
         </tr>
         <tr>
             <td style="font-size: 18px; font-family: sans-serif;">
-                <p></p> 
+                <p>Veuillez trouver ci-dessous le récapitulatif de votre demande :</p> 
                 <table>
                     ${recap}
                 </table
@@ -238,9 +238,9 @@ exports.handler = async function (event, context) {
         </tr>
         <tr>
             <td style="background-color: #0c1836; padding: 50px 0; ">
-                <p style="text-align:center; color:#ffffff;font-family: sans-serif; margin-bottom: 20px;">
-                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Follow us</p>
+                
                 <ul style="text-align: center;">
+                <p style="text-align:center; color:#ffffff;font-family: sans-serif; margin-bottom: 20px;">Follow us</p>
                     <li style="display: inline; text-decoration: none; color: #ffffff; "><a
                             href="https://facebook.com/asasline" target="_blank"
                             style="color: #ffffff; text-decoration: none; font-family: sans-serif;">Facebook</a></li>
