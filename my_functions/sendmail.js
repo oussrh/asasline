@@ -15,7 +15,7 @@ exports.handler = async function (event, context) {
     let recap;
     if (data.service == "L") {
         if (data.lang == "en") {
-            recap = `
+            recap = await `
         <tr>
             <th>Service</th>
             <td>Container renting</td>
@@ -39,7 +39,7 @@ exports.handler = async function (event, context) {
         <tr>
    `}
         else {
-            recap = `
+            recap = await `
         <tr>
             <th>Service</th>
             <td>Location de contenaire</td>
@@ -66,7 +66,7 @@ exports.handler = async function (event, context) {
     }
     else {
         if (data.lang == "en") {
-            recap = `
+            recap = await `
         <tr>
             <th>Service</th>
             <td>Transport</td>
@@ -98,7 +98,7 @@ exports.handler = async function (event, context) {
         <tr>
    `}
         else {
-            recap = `
+            recap = await `
         <tr>
             <th>Service</th>
             <td>Transport</td>
