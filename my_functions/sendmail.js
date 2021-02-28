@@ -41,7 +41,8 @@ exports.handler = async function (event, context) {
         else {
 
             recap = await `
-            <th>Service</th>
+            <th>Service ${process.env.CONTENTFUL_ACCESS_TOKEN}</th>
+
             <td>Transport</td>
             <tr>
             <tr>
