@@ -2,4 +2,61 @@
   width: 100vw;
   height: 500px;
   background-color: #f7af3d;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.qualitiesContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+}
+.qualitiesContainer div {
+  width: 200px;
+  height: 200px;
+  margin: 100px;
+  background-color: #0c1836;
+  border: solid 2px #0c1836;
+  transform: rotateY(0deg) rotate(45deg); /* needs Y at 0 deg to behave properly*/
+  transition: transform 2s;
+}
+
+.qualitiesContainer div:hover {
+  transform: rotateY(180deg) rotate(45deg); /* notice the order */
+}
+
+.qualityTxt {
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.qualityIcon {
+  transform: rotate(-45deg);
+  margin: 80px;
+  font-size: 35px !important;
+  color: #f7af3d;
+}
+
+/****************************Phones****************************************/
+@media only screen and (max-width: 420px) {
+  .qualitiesContainer div {
+    width: 80px;
+    height: 80px;
+    margin: 20px;
+  }
+
+  .qualityTxt {
+    font-weight: bold;
+    font-size: 12px;
+  }
+
+  .qualityIcon {
+    transform: rotate(-45deg);
+    margin: 30px;
+    font-size: 18px !important;
+    color: #f7af3d;
+  }
 }

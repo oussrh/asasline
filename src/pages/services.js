@@ -56,7 +56,7 @@ const ServicesPage = () => {
                         return (
                             <section className="serviceGeneralInfoRow">
 
-                                <section key={artl.id}>
+                                <section key={artl.id} className="serviceGeneralText">
                                     <h1>{artl.title}</h1>
                                     {renderRichText(artl.servicesText)}
                                 </section >

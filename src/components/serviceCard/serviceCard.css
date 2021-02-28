@@ -1,7 +1,7 @@
 /* Service card */
 
 .ServicesContainer {
-  width: 100%;
+  width: 100vw;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
@@ -35,4 +35,26 @@
 
 .Service ul {
   margin-left: 50px;
+}
+
+/****************************Phones****************************************/
+@media only screen and (max-width: 420px) {
+  .servicePageContainer {
+    padding: 0;
+  }
+  .ServicesContainer {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+  }
+
+  .Service {
+    margin: 20px auto;
+    width: 100%;
+  }
+
+  .Service .card-body {
+    padding: 20px 20px;
+  }
 }

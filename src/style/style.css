@@ -143,6 +143,11 @@ aside {
   width: 70vw;
 }
 
+.serviceGeneralText {
+  width: 70vw;
+  margin: 0 auto;
+}
+
 /****************************Phones****************************************/
 @media only screen and (max-width: 420px) {
   /* About page */
@@ -190,5 +195,14 @@ aside {
     margin-top: -10px !important;
     margin-left: -10px !important;
     overflow: visible;
+  }
+
+  /* Service Page */
+  .servicePageContainer {
+    width: 80vw;
+  }
+
+  .serviceGeneralInfoRow {
+    width: 100%;
   }
 }
