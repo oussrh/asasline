@@ -42,10 +42,21 @@
 
 /****************************Phones****************************************/
 @media only screen and (max-width: 420px) {
+  .GeneralInfo {
+    height: 300px;
+    background-color: #f7af3d;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
   .qualitiesContainer div {
     width: 80px;
     height: 80px;
     margin: 20px;
+  }
+
+  .qualitiesContainer div:hover {
+    transform: none !important; /* notice the order */
   }
 
   .qualityTxt {
