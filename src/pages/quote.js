@@ -89,6 +89,8 @@ const DevisPage = () => {
             allContentfulQuotePage {
                 nodes {
                     title
+                    seoTitle
+                    seoDescription
                     node_locale
                     id
                     quoteText {
@@ -181,11 +183,19 @@ const DevisPage = () => {
         }
     };
 
+    let seoTitle, seoDescription
+    qdata.allContentfulQuotePage.nodes.filter(artl => artl.node_locale === intl.locale).map(seo => {
+        seoTitle = seo.seoTitle
+        seoDescription = seo.seoDescription
+    })
+
     const countries = qdata.allContentfulCountries.nodes.filter(l => l.node_locale === lang)[0].countries
     return (
         <>
             <Layout>
-                <SEO title={intl.formatMessage({ id: "devis_page" })} />
+                <SEO
+                    title={seoTitle}
+                    description={seoDescription} />
                 <Container className="estimation_container">
 
                     {

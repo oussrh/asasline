@@ -1,5 +1,5 @@
 import React from "react"
-
+import { useStaticQuery, graphql } from "gatsby"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import Carousel from "../components/carousel/carousel"
@@ -12,11 +12,29 @@ import { useIntl } from "gatsby-plugin-intl"
 
 const IndexPage = () => {
   const intl = useIntl()
+  const data = useStaticQuery(
+    graphql`
+    query {
+      allContentfulHomepageSeo {
+        nodes {
+          seoTitle
+          seoDescription
+          node_locale
+        }
+      }
+    }`)
+
+  let seoTitle, seoDescription
+  data.allContentfulHomepageSeo.nodes.filter(artl => artl.node_locale === intl.locale).map(seo => {
+    seoTitle = seo.seoTitle
+    seoDescription = seo.seoDescription
+  })
+
   return (
     <Layout>
       <SEO
-        title={intl.formatMessage({ id: "homePage_seo_title" })}
-        description={intl.formatMessage({ id: "homePage_seo_description" })} />
+        title={seoTitle}
+        description={seoDescription} />
       <Carousel />
       <GeneralInfo />
       <InfoAndImage />
