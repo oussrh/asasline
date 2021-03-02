@@ -252,10 +252,10 @@ const DevisPage = () => {
                         <Form.Row>
 
                             <Col>
-                                <Button onClick={handleServiceSelect} value="T" className="quoteType" variant="secondary">Transport</Button>
+                                <Button onClick={handleServiceSelect} value="T" className="quoteType" variant="secondary">{intl.formatMessage({ id: "form_service_choice_T" })}</Button>
                             </Col>
                             <Col>
-                                <Button onClick={handleServiceSelect} value="L" className="quoteType" variant="secondary">Location</Button>
+                                <Button onClick={handleServiceSelect} value="L" className="quoteType" variant="secondary">{intl.formatMessage({ id: "form_service_choice_L" })}</Button>
                             </Col>
 
 
@@ -341,8 +341,8 @@ const DevisPage = () => {
                                         <Form.Row>
                                             <Col>
                                                 <Form.Group controlId="startLocDate">
-                                                    <Form.Label>{intl.formatMessage({ id: "form_ExpectedDeparture_label" })}</Form.Label>
-                                                    <Form.Control type="date" name="dock" onChange={handleExpectedDateInput} placeholder={intl.formatMessage({ id: "form_ExpectedDeparture_placeHolder" })} />
+                                                    <Form.Label>{intl.formatMessage({ id: "form_ExpectedDeparture_label" })} <span className="required_star">*</span></Form.Label>
+                                                    <Form.Control type="date" name="dock" onChange={handleExpectedDateInput} placeholder={intl.formatMessage({ id: "form_ExpectedDeparture_placeHolder" })} required />
                                                     <Form.Control.Feedback type="invalid">{intl.formatMessage({ id: "form_ExpectedDeparture_validation" })}</Form.Control.Feedback>
                                                 </Form.Group>
                                             </Col>
@@ -399,16 +399,16 @@ const DevisPage = () => {
                                             <Form.Row>
                                                 <Col>
                                                     <Form.Group controlId="startLocDate">
-                                                        <Form.Label>{intl.formatMessage({ id: "form_ExpectedDeparture_label" })}</Form.Label>
-                                                        <Form.Control type="date" name="dock" onChange={handleExpectedStartDateInput} placeholder={intl.formatMessage({ id: "form_ExpectedDeparture_placeHolder" })} />
-                                                        <Form.Control.Feedback type="invalid">{intl.formatMessage({ id: "form_ExpectedDeparture_validation" })}</Form.Control.Feedback>
+                                                        <Form.Label>{intl.formatMessage({ id: "form_ExpectedStartLoc_label" })} <span className="required_star">*</span> </Form.Label>
+                                                        <Form.Control type="date" name="dock" onChange={handleExpectedStartDateInput} placeholder={intl.formatMessage({ id: "form_ExpectedStartLoc_placeHolder" })} required />
+                                                        <Form.Control.Feedback type="invalid">{intl.formatMessage({ id: "form_ExpectedStartLoc_validation" })}</Form.Control.Feedback>
                                                     </Form.Group>
                                                 </Col>
                                                 <Col>
                                                     <Form.Group controlId="endLocDate">
-                                                        <Form.Label>{intl.formatMessage({ id: "form_ExpectedDeparture_label" })}</Form.Label>
-                                                        <Form.Control type="date" name="dock" onChange={handleExpectedEndDateInput} placeholder={intl.formatMessage({ id: "form_ExpectedDeparture_placeHolder" })} />
-                                                        <Form.Control.Feedback type="invalid">{intl.formatMessage({ id: "form_ExpectedDeparture_validation" })}</Form.Control.Feedback>
+                                                        <Form.Label>{intl.formatMessage({ id: "form_ExpectedEndLoc_label" })} <span className="required_star">*</span></Form.Label>
+                                                        <Form.Control type="date" name="dock" onChange={handleExpectedEndDateInput} placeholder={intl.formatMessage({ id: "form_ExpectedEndLoc_placeHolder" })} required />
+                                                        <Form.Control.Feedback type="invalid">{intl.formatMessage({ id: "form_ExpectedEndLoc_validation" })}</Form.Control.Feedback>
                                                     </Form.Group>
                                                 </Col>
                                             </Form.Row>
