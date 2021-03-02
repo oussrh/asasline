@@ -374,7 +374,7 @@ const DevisPage = () => {
                                                 <Col>
                                                     <Form.Group controlId="locfromcountry">
                                                         <Form.Label>{intl.formatMessage({ id: "form_FROM_country_label" })} <span className="required_star">*</span></Form.Label>
-                                                        <Form.Control type="tel" name="locfromcountry" onChange={handleLocCountryInput} placeholder={intl.formatMessage({ id: "form_country_placeHolder" })} required />
+                                                        <Form.Control type="text" name="locfromcountry" onChange={handleLocCountryInput} placeholder={intl.formatMessage({ id: "form_country_placeHolder" })} required />
                                                         <Form.Control.Feedback type="invalid">{intl.formatMessage({ id: "form_fromcountry_validation" })}</Form.Control.Feedback>
                                                     </Form.Group>
                                                 </Col>
