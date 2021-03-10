@@ -1,4 +1,4 @@
-import query from "./query"
+const query = require("./query")
 const GET_ALL_PORTS = `
 query {
     allPorts {
