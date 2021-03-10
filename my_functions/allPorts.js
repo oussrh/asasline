@@ -1,4 +1,4 @@
-import query from "./quey"
+import query from "./query"
 const GET_ALL_PORTS = `
 query {
     allPorts {
@@ -12,7 +12,6 @@ query {
 
 exports.handler = async () => {
   const { data, errors } = await query(GET_ALL_PORTS)
-
   if (errors) {
     return {
       statusCode: 500,
@@ -22,6 +21,6 @@ exports.handler = async () => {
 
   return {
     statusCode: 200,
-    body: JSON.stringify({ messages: data.allPorts.data }),
+    body: JSON.stringify({ ports: data.allPorts.data }),
   }
 }
