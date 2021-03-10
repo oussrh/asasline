@@ -1,0 +1,31 @@
+type Port {
+  name: String!
+  description: String!
+}
+
+type Quote {
+  departure: Port!
+  arrival: Port!
+  price: Int!
+}
+
+type User {
+  name: String!
+  email: String!
+  point: Int
+  bookings: [Booking]
+}
+
+type Booking {
+  user: User!
+  from: Port!
+  to: Port!
+  price: Quote!
+  date: Date!
+  point: Int!
+}
+
+type Query {
+  allPorts: [Port]
+  allUsers: [User]
+}
