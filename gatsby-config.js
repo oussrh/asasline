@@ -11,6 +11,12 @@ module.exports = {
   },
   plugins: [
     {
+      resolve: `gatsby-plugin-netlify-identity`,
+      options: {
+        url: `https://asasline.com/`,
+      },
+    },
+    {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
         trackingId: "UA-172939946-3",
@@ -32,7 +38,7 @@ module.exports = {
       },
     },
     {
-      resolve: 'gatsby-plugin-minify-html',
+      resolve: "gatsby-plugin-minify-html",
       options: {
         debug: false,
         config: {
@@ -43,9 +49,9 @@ module.exports = {
           removeScriptTypeAttributes: false,
           removeStyleLinkTypeAttributes: false,
           sortAttributes: true,
-          useShortDoctype: true
-        }
-      }
+          useShortDoctype: true,
+        },
+      },
     },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
@@ -55,9 +61,13 @@ module.exports = {
     `gatsby-plugin-netlify-cache`,
     `gatsby-plugin-netlify`,
     {
-      resolve: 'gatsby-plugin-preconnect',
+      resolve: "gatsby-plugin-preconnect",
       options: {
-        domains: ['https://gstatic.com', 'https://cloudfront.net', 'https://ampproject.org'],
+        domains: [
+          "https://gstatic.com",
+          "https://cloudfront.net",
+          "https://ampproject.org",
+        ],
       },
     },
     {
@@ -80,7 +90,7 @@ module.exports = {
       },
     },
     {
-      resolve: 'gatsby-plugin-mailchimp',
+      resolve: "gatsby-plugin-mailchimp",
       options: {
         endpoint: process.env.MAILCHIMP_ENDPOINT,
       },
@@ -88,12 +98,12 @@ module.exports = {
     `gatsby-plugin-fontawesome-css`,
     `gatsby-plugin-sitemap`,
     {
-      resolve: 'gatsby-plugin-robots-txt',
+      resolve: "gatsby-plugin-robots-txt",
       options: {
-        host: 'https://asasline.com',
-        sitemap: 'https://asasline.com/sitemap.xml',
-        policy: [{ userAgent: '*', allow: '/' }]
-      }
+        host: "https://asasline.com",
+        sitemap: "https://asasline.com/sitemap.xml",
+        policy: [{ userAgent: "*", allow: "/" }],
+      },
     },
     {
       resolve: `gatsby-source-contentful`,
