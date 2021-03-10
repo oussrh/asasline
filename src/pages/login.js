@@ -11,6 +11,12 @@ import Modal from "react-bootstrap/Modal"
 const Login = () => {
   const identity = useIdentityContext()
   const [dialog, setDialog] = useState(false)
+  const email =
+    (identity &&
+      identity.user &&
+      identity.user.user_metadata &&
+      identity.user.user_metadata.email) ||
+    "Untitled"
   const name =
     (identity &&
       identity.user &&
@@ -18,6 +24,11 @@ const Login = () => {
       identity.user.user_metadata.full_name) ||
     "Untitled"
   const isLoggedIn = identity && identity.isLoggedIn
+
+  const handleCreateUser = async (name, email) => {
+    await axios.post("/api/createUser", { name, email })
+  }
+
   return (
     <div>
       <IdentityModal
@@ -33,7 +44,9 @@ const Login = () => {
             className="login-btn"
             onClick={() => setDialog(true)}
           >
-            {isLoggedIn ? `Hello ${name}, Log out here!` : "LOG IN"}
+            {isLoggedIn
+              ? `Hello ${name}, Log out here!` && handleCreateUser(name, email)
+              : "LOG IN"}
           </Button>
         </div>
       ) : (

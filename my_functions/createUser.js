@@ -1,4 +1,4 @@
-import query from "./quey"
+import query from "./query"
 
 const CREATE_USER = `
 mutation {
