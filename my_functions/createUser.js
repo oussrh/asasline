@@ -1,22 +1,22 @@
-import query from "./quey"
+const query = require("./query")
 
-const CREATE_USER = `
-mutation {
-    createUser(data: {name: "M", email: "a@a.com"}){
-      name
-      _id
-      email
-    }
-  }
-`
-
-exports.handler = async event => {
-  const { data, errors } = await query(CREATE_USER, {
-    name,
-    email,
-  })
+exports.handler = async e => {
+  const { name, email } = JSON.parse(e.body)
+  const { data, errors } = await query(
+    `
+    mutation($data: UserInput!) {
+        createUser(data: $data) {
+          name
+          _id
+          email
+        }
+      }
+  `,
+    { data: { name: name, email: email } }
+  )
 
   if (errors) {
+    console.log(errors)
     return {
       statusCode: 500,
       body: JSON.stringify(errors),

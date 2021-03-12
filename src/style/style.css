@@ -233,3 +233,47 @@ aside {
     width: 100%;
   }
 }
+.profile-container {
+  margin-top: 30px;
+  margin-bottom: 30px;
+  height: 60vh;
+  display: flex;
+  justify-content: center;
+  color: #333333;
+}
+.profile-container div {
+  border: 1px solid;
+  border-radius: 8px;;
+  background-color: #F9F9F9;
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.profile-container div h2 {
+  margin-top: 30px;
+}
+
+.booking-container {
+  border: 1px solid;
+  border-radius: 8px;;
+  background-color: #F9F9F9;
+  width: 60%;
+  height: 70vh;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  margin-top: 30px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 30px;
+}
+
+.booking-grid  {
+  display: grid;
+  grid-auto-columns: 1fr;
+  grid-auto-flow: column;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
