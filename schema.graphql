@@ -12,15 +12,14 @@ type Quote {
 type User {
   name: String!
   email: String!
-  point: Int
-  bookings: [Booking]
+  bookings: [Booking] @relation
 }
 
 type Booking {
   user: User!
   from: Port!
   to: Port!
-  price: Quote!
+  price: Int!
   date: Date!
   point: Int!
 }
@@ -28,4 +27,6 @@ type Booking {
 type Query {
   allPorts: [Port]
   allUsers: [User]
+  allBookings: [Booking]
+  active(email: String!): User!
 }
