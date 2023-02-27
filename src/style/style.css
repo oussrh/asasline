@@ -3,6 +3,7 @@
 * {
   scroll-behavior: smooth;
 }
+
 body,
 html,
 p,
@@ -173,6 +174,70 @@ aside {
   width: 20px;
   height: 20px;
   border-width: thin;
+}
+
+/* Offices */
+.mapContainer {
+  width: 100vw;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.regioMap {
+  width: 30%;
+  text-align: center;
+}
+
+.mapMarker {
+  cursor: pointer;
+}
+
+.officeContactCardList {
+  width: 80vw;
+  margin-left: 100px;
+  margin-top: 50px;
+  margin-bottom: 20px;
+}
+
+.officeContactCard {
+  border-bottom: #495057 1px solid;
+  padding-bottom: 10px;
+  padding-top: 10px;
+}
+
+.officeContactCard h5 {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.officeContactAddress {
+}
+
+.officeContactCountry {
+  margin-top: 10px;
+}
+
+.officeContactInfo {
+  margin-top: 20px;
+}
+
+.officeContactInfo p,
+.officeContactInfo ul {
+  margin-left: 100px;
+  list-style: none;
+}
+
+.officeContactInfo label {
+  font-style: italic;
+}
+
+.officeContactInfo a {
+  text-decoration: none;
+  color: #0c1836;
+  font-weight: bold;
 }
 
 /****************************Phones****************************************/

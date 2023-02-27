@@ -54,6 +54,7 @@
     "react-google-recaptcha": "^2.1.0",
     "react-helmet": "^6.1.0",
     "react-netlify-identity-widget": "^0.2.7",
+    "react-simple-maps": "^3.0.0",
     "sweetalert2": "^10.14.1"
   },
   "devDependencies": {

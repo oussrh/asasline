@@ -150,6 +150,11 @@ const Footer = () => {
 							<h3>{intl.formatMessage({ id: 'link_page' })}</h3>
 							<ul>
 								<li>
+									<Link to="/offices">
+										{intl.formatMessage({ id: 'offices_page' })}
+									</Link>
+								</li>
+								<li>
 									{
 										<Link to="/privacy">
 											{intl.formatMessage({ id: 'PrivacyPolicy_page' })}
