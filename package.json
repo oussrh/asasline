@@ -38,6 +38,7 @@
     "gatsby-plugin-sharp": "^2.14.1",
     "gatsby-plugin-sitemap": "^2.12.0",
     "gatsby-plugin-transition-link": "^1.20.5",
+    "gatsby-plugin-use-query-params": "^1.0.1",
     "gatsby-plugin-verify-bing": "^1.1.26",
     "gatsby-source-contentful": "^4.6.1",
     "gatsby-source-filesystem": "^2.11.0",
@@ -55,7 +56,8 @@
     "react-helmet": "^6.1.0",
     "react-netlify-identity-widget": "^0.2.7",
     "react-simple-maps": "^3.0.0",
-    "sweetalert2": "^10.14.1"
+    "sweetalert2": "^10.14.1",
+    "use-query-params": "^2.2.0"
   },
   "devDependencies": {
     "prettier": "2.2.1"

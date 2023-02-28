@@ -200,10 +200,17 @@ aside {
   margin-left: 100px;
   margin-top: 50px;
   margin-bottom: 20px;
+  display: flex;
+  justify-content: space-around;
+  flex-direction: row;
 }
 
+.officeContactImage {
+  height: 300px;
+  width: 300px;
+}
 .officeContactCard {
-  border-bottom: #495057 1px solid;
+  width: 60%;
   padding-bottom: 10px;
   padding-top: 10px;
 }
@@ -211,6 +218,9 @@ aside {
 .officeContactCard h5 {
   font-size: 20px;
   font-weight: bold;
+  padding: 10px 20px 10px 10px;
+  background-color: #0c1836;
+  color: #fff;
 }
 
 .officeContactAddress {

@@ -25,59 +25,6 @@ import { renderRichText } from 'gatsby-source-contentful/rich-text'
 const geoUrl =
 	'https://raw.githubusercontent.com/deldersveld/topojson/master/world-countries.json'
 
-const markers = [
-	{
-		markerOffset: 15,
-		name: 'Istanbul',
-		coordinates: [28.9784, 41.0082],
-	},
-	{
-		markerOffset: 15,
-		name: 'Dubai',
-		coordinates: [55.2708, 25.2048],
-	},
-	{
-		markerOffset: 15,
-		name: 'Beirut',
-		coordinates: [35.4944, 33.8938],
-	},
-	{
-		markerOffset: 15,
-		name: 'Port Sudan',
-		coordinates: [37.2394, 19.5773],
-	},
-	{
-		markerOffset: 15,
-		name: 'Aqaba',
-		coordinates: [35.0023, 29.5329],
-	},
-	{
-		markerOffset: 15,
-		name: 'Latakia',
-		coordinates: [35.7836, 35.5326],
-	},
-	{
-		markerOffset: 15,
-		name: 'Jeddah',
-		coordinates: [39.2192, 21.4858],
-	},
-	{
-		markerOffset: -15,
-		name: 'Gaziantep',
-		coordinates: [37.0675, 37.3833],
-	},
-	{
-		markerOffset: -15,
-		name: 'Iskenderun',
-		coordinates: [36.1048, 36.147],
-	},
-	{
-		markerOffset: 15,
-		name: 'Al-Adabiya',
-		coordinates: [32.211, 29.472],
-	},
-]
-
 const cities = [
 	{ markerOffset: 15, name: 'Brussels', coordinates: [4.3517, 50.8503] },
 ]
@@ -107,7 +54,11 @@ const Offices = () => {
 						node_locale
 						city
 						anchor
+						coordinates
+						zone
+						offest
 						country
+
 						email {
 							contact
 							email
@@ -121,7 +72,80 @@ const Offices = () => {
 		`
 	)
 
-	console.log(data)
+	// const markers = [
+	// 	{
+	// 		markerOffset: 15,
+	// 		name: 'Istanbul',
+	// 		coordinates: [28.9784, 41.0082],
+	// 	},
+	// 	{
+	// 		markerOffset: 15,
+	// 		name: 'Dubai',
+	// 		coordinates: [55.2708, 25.2048],
+	// 	},
+	// 	{
+	// 		markerOffset: 15,
+	// 		name: 'Beirut',
+	// 		coordinates: [35.4944, 33.8938],
+	// 	},
+	// 	{
+	// 		markerOffset: 15,
+	// 		name: 'Port-Sudan',
+	// 		coordinates: [37.2394, 19.5773],
+	// 	},
+	// 	{
+	// 		markerOffset: 15,
+	// 		name: 'Aqaba',
+	// 		coordinates: [35.0023, 29.5329],
+	// 	},
+	// 	{
+	// 		markerOffset: 15,
+	// 		name: 'Latakia',
+	// 		coordinates: [35.7836, 35.5326],
+	// 	},
+	// 	{
+	// 		markerOffset: 15,
+	// 		name: 'Jeddah',
+	// 		coordinates: [39.2192, 21.4858],
+	// 	},
+	// 	{
+	// 		markerOffset: -15,
+	// 		name: 'Gaziantep',
+	// 		coordinates: [37.0675, 37.3833],
+	// 	},
+	// 	{
+	// 		markerOffset: -15,
+	// 		name: 'Iskenderun',
+	// 		coordinates: [36.1048, 36.147],
+	// 	},
+	// 	{
+	// 		markerOffset: 15,
+	// 		name: 'Al-Adabiya',
+	// 		coordinates: [32.211, 29.472],
+	// 	},
+	// ]
+
+	const middelEastZone = data.allContentfulOffice.nodes
+		.filter(
+			(office) =>
+				office.zone === 'Middle-East' && office.node_locale === intl.locale
+		)
+		.map((office) => ({
+			markerOffset: office.offest,
+			name: office.anchor,
+			coordinates: JSON.parse(office.coordinates),
+		}))
+
+	const europeZone = data.allContentfulOffice.nodes
+		.filter(
+			(office) => office.zone === 'Europe' && office.node_locale === intl.locale
+		)
+		.map((office) => ({
+			markerOffset: office.offest,
+			name: office.anchor,
+			coordinates: JSON.parse(office.coordinates),
+		}))
+
 	let seoTitle, seoDescription
 	data.allContentfulOfficePage.nodes
 		.filter((artl) => artl.node_locale === intl.locale)
@@ -129,6 +153,10 @@ const Offices = () => {
 			seoTitle = seo.seoTitle
 			seoDescription = seo.seoDescription
 		})
+
+	useEffect(() => {
+		window.scrollTo(0, 0)
+	}, [])
 
 	return (
 		<Layout>
@@ -166,8 +194,8 @@ const Offices = () => {
 								))
 							}
 						</Geographies>
-						{cities.map(({ name, coordinates, markerOffset }) => (
-							<a href={'#' + name}>
+						{europeZone.map(({ name, coordinates, markerOffset }) => (
+							<a href={'/office?q=' + name}>
 								<Marker
 									key={name}
 									coordinates={coordinates}
@@ -211,8 +239,8 @@ const Offices = () => {
 								))
 							}
 						</Geographies>
-						{markers.map(({ name, coordinates, markerOffset }) => (
-							<a href={'#' + name}>
+						{middelEastZone.map(({ name, coordinates, markerOffset }) => (
+							<a href={'/office?q=' + name}>
 								<Marker
 									className="mapMarker"
 									key={name}
@@ -237,7 +265,7 @@ const Offices = () => {
 					</ComposableMap>
 				</div>
 			</section>
-			<section className="officeContactCardList">
+			{/* <section className="officeContactCardList">
 				{data.allContentfulOffice.nodes
 					.filter((office) => office.node_locale === intl.locale)
 					.map((office) => {
@@ -252,16 +280,7 @@ const Offices = () => {
 								</p>
 								<div className="officeContactInfo" id={office.anchor}>
 									<h6>Contact info :</h6>
-									{/* {office.tel !== '' && (
-										<p>
-											<FontAwesomeIcon icon={faPhone} /> {office.tel}
-										</p>
-									)}
-									{office.fax !== '' && (
-										<p>
-											<FontAwesomeIcon icon={faFax} /> {office.fax}
-										</p>
-									)} */}
+
 									<ul>
 										{office.email.map((elm) => (
 											<li>
@@ -275,7 +294,7 @@ const Offices = () => {
 							</article>
 						)
 					})}
-			</section>
+			</section> */}
 		</Layout>
 	)
 }

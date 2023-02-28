@@ -59,6 +59,7 @@ module.exports = {
 		`gatsby-plugin-transition-link`,
 		`gatsby-plugin-anchor-links`,
 		`gatsby-plugin-netlify-cache`,
+		"gatsby-plugin-use-query-params",
 		`gatsby-plugin-netlify`,
 		{
 			resolve: 'gatsby-plugin-preconnect',
