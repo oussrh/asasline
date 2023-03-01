@@ -190,7 +190,16 @@ const Offices = () => {
 						<Geographies geography={geoUrl}>
 							{({ geographies }) =>
 								geographies.map((geo) => (
-									<Geography key={geo.rsmKey} geography={geo} fill="#F0F0F0" />
+									<Geography
+										key={geo.rsmKey}
+										geography={geo}
+										fill="#F0F0F0"
+										style={{
+											default: { outline: 'none' },
+											hover: { outline: 'none' },
+											pressed: { outline: 'none' },
+										}}
+									/>
 								))
 							}
 						</Geographies>
@@ -229,6 +238,11 @@ const Offices = () => {
 									<Geography
 										key={geo.rsmKey}
 										geography={geo}
+										style={{
+											default: { outline: 'none' },
+											hover: { outline: 'none' },
+											pressed: { outline: 'none' },
+										}}
 										fill="#DDD"
 										stroke="#FFF"
 									/>
