@@ -88,7 +88,7 @@ const Office = (props) => {
 		<Layout>
 			<SEO title={seoTitle} description={seoDescription} />
 
-			<section className="officeContactCardList">
+			<section className="officeContactCardContainer">
 				{offices.map((office) => {
 					if (office.anchor === q)
 						return (

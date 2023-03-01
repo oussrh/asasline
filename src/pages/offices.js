@@ -162,7 +162,7 @@ const Offices = () => {
 		<Layout>
 			<SEO title={seoTitle} description={seoDescription} />
 
-			<article className="privacyPageContainer">
+			<article className="OfficesPageContainer">
 				{data.allContentfulOfficePage.nodes
 					.filter((artl) => artl.node_locale === intl.locale)
 					.map((artl) => {
@@ -203,13 +203,9 @@ const Offices = () => {
 								>
 									<circle r={6} fill="#F00" />
 									<text
+										className="citiesName"
 										textAnchor="middle"
 										y={markerOffset + 4}
-										style={{
-											fontFamily: 'Arial',
-											fontSize: '12px',
-											fill: '#000',
-										}}
 									>
 										{name}
 									</text>
@@ -249,13 +245,9 @@ const Offices = () => {
 								>
 									<circle r={6} fill="#F00" />
 									<text
+										className="citiesName"
 										textAnchor="middle"
 										y={markerOffset + 4}
-										style={{
-											fontFamily: 'Arial',
-											fontSize: '12px',
-											fill: '#000',
-										}}
 									>
 										{name}
 									</text>
