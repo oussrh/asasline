@@ -25,13 +25,8 @@ import { renderRichText } from 'gatsby-source-contentful/rich-text'
 const geoUrl =
 	'https://raw.githubusercontent.com/deldersveld/topojson/master/world-countries.json'
 
-const cities = [
-	{ markerOffset: 15, name: 'Brussels', coordinates: [4.3517, 50.8503] },
-]
-
 const Offices = () => {
 	const intl = useIntl()
-
 	const data = useStaticQuery(
 		graphql`
 			query {
